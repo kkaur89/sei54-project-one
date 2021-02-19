@@ -1,3 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: aquamarine;
+  background-image: url("../images/130.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+header {
+  text-align: center;
+}
+
+.section-one {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 600px;
+  width: 600px;
+
+}
+
+.grid div {
+  text-align: center;
+  border: 1px solid lightgrey;
+  flex-grow: 1;
+  height: 10%;
+  width: 15%;
+}
+
+.grid div.chanel {
+  background-image: url("../images/small-boy-chanel-handbag-blue-grained-.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.grid div.ysl {
+  background-image: url("../images/118-2000644-442906D420W1000_BLACKGOLD_M.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
 }
