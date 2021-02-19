@@ -7,8 +7,9 @@ function init() {
   const cellCount = width * height
   const cells = []
 
-  let currentPlayer = ['player one', 'player two']
-  console.log('I am current player', currentPlayer)
+  const allPlayers = ['player one', 'player two']
+  let currentPlayer = allPlayers[0]
+ 
 
 
   function createGrid() {
@@ -21,8 +22,17 @@ function init() {
 
   }
 
+// if player 1 choose chanel, if player 2 choose ysl
+// 
+
   function startGame(event) {
-    console.log('event', event.target)
+    if (currentPlayer === allPlayers[0]) {
+      event.target.classList.add('chanel')
+      currentPlayer = allPlayers[1]
+    } else {
+      event.target.classList.add('ysl')
+      currentPlayer = allPlayers[0]
+    }
   }
 
   document.addEventListener('click', startGame)

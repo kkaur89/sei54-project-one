@@ -19,27 +19,31 @@ header {
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  background-image: url("../images/Screenshot\ 2021-02-18\ at\ 17.28.34.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 600px;
-  width: 600px;
+  height: 650px;
+  width: 800px;
 
 }
 
 .grid div {
   text-align: center;
+  flex-grow: 0.5;
   border: 1px solid lightgrey;
-  flex-grow: 1;
-  height: 10%;
+  height: 12.5%;
   width: 15%;
 }
 
 .grid div.chanel {
-  background-image: url("../images/small-boy-chanel-handbag-blue-grained-.jpg");
+  background-image: url("../images/small-boy-chanel-handbag-blue-grained-.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: bottom;
   cursor: pointer;
 }
 
@@ -47,5 +51,20 @@ header {
   background-image: url("../images/118-2000644-442906D420W1000_BLACKGOLD_M.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   cursor: pointer;
+}
+
+.section-two {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px 0 50px;
+}
+
+.player-one {
+  margin: 0 0 0 50px;
+}
+
+.player-two {
+  margin: 0 50px 0 0;
 }
