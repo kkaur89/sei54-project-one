@@ -7,9 +7,17 @@ function init() {
   const cellCount = width * height
   const cells = []
 
+  // console.log('grid', grid)
+  // console.log('cells', cells)
+
   const allPlayers = ['player one', 'player two']
   let currentPlayer = allPlayers[0]
- 
+
+  const playerOneChoice = []
+  const playerTwoChoice = []
+
+  // console.log('playerChoiceOne',playerOneChoice)
+  // console.log('playerChoiceTwo',playerTwoChoice)
 
 
   function createGrid() {
@@ -25,18 +33,29 @@ function init() {
 // if player 1 choose chanel, if player 2 choose ysl
 // 
 
+// step 2 , push elemt from exisitng array into a new array based on the event listener
+
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
-      event.target.classList.add('chanel')
-      currentPlayer = allPlayers[1]
+      event.target.classList.add('chanel')   
+
+      const choice = event.target.innerText
+      playerOneChoice.push(Number(choice))
+      
+      currentPlayer = allPlayers[1]      
+      
     } else {
       event.target.classList.add('ysl')
+
+      const Secondchoice = event.target.innerText
+      playerTwoChoice.push(Number(Secondchoice))
+
       currentPlayer = allPlayers[0]
     }
+
   }
 
   document.addEventListener('click', startGame)
-
 
   createGrid()
 

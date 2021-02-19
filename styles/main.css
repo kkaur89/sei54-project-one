@@ -22,6 +22,7 @@ header {
   background-image: url("../images/Screenshot\ 2021-02-18\ at\ 17.28.34.png");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: bottom;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +36,7 @@ header {
   text-align: center;
   flex-grow: 0.5;
   border: 1px solid lightgrey;
-  height: 12.5%;
+  height: 13.5%;
   width: 15%;
 }
 
