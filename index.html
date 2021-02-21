@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/main.css">
   <script src="./scripts.app.js" charset="utf-8"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 
@@ -15,21 +17,32 @@
   </header>
   <div class="section-one">
     <div class="player-one">
-      <p class="player">Player 1</p>
-      <p class="score"><span>Score:</span></p>
+      <p class="player">PLAYER ONE</p>
+      <img src="images/small-boy-chanel-handbag-blue-grained-.png" class="P1CHANEL">
+      <p class="score" id="scoreOne"><span>SCORE: </span></p>
     </div>
-    <div class="grid-wrapper">
+    <div class="grid-floor">
+      <div class="grid-wrapper"></div>
       <div class="grid"></div>
+      <div class="floor"></div>
     </div>
     <div class="player-two">
-      <p class="player">Player 2</p>
-      <p class="score"><span>Score:</span></p>
+      <p class="player">PLAYER TWO</p>
+      <img src="images/118-2000644-442906D420W1000_BLACKGOLD_M.png" class="P1YSL">
+      <p class="score" id="scoreTwo"><span>SCORE: </span></p>
     </div>
   </div>
 
   <div class="section-two">
     <button id="start">Start Game</button>
     <button id="finish">End Game</button>
+  </div>
+
+  <div class="Winner">
+    <p class="print-winner">CONGRATULATIONS</p>
+    <p class="player-winner"><span>PLAYER</span></p>
+    <button id="start-again">PLAY AGAIN</button>
+    <button id="finish">END GAME</button>
   </div>
   
 </body>

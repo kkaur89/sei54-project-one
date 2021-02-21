@@ -6,10 +6,21 @@ body {
   background-image: url("../images/130.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: 'Libre Franklin', sans-serif;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 header {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+img.selfridges {
+  justify-content: center;
 }
 
 .section-one {
@@ -17,7 +28,27 @@ header {
   justify-content: space-between;
 }
 
+.grid-floor {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.floor {
+  width: 1000px;
+  height: 150px;
+  background-image: url("../images/Screenshot\ 2021-02-20\ at\ 15.32.47.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.grid-wrapper{
+  justify-content: center;
+}
+
 .grid {
+  margin: 50px 0 0 0;
   align-items: center;
   background-image: url("../images/Screenshot\ 2021-02-18\ at\ 17.28.34.png");
   background-size: cover;
@@ -34,6 +65,7 @@ header {
 
 .grid div {
   text-align: center;
+  justify-content: center;
   flex-grow: 0.5;
   border: 1px solid lightgrey;
   height: 13.5%;
@@ -46,6 +78,7 @@ header {
   background-size: contain;
   background-position: bottom;
   cursor: pointer;
+
 }
 
 .grid div.ysl {
@@ -54,6 +87,7 @@ header {
   background-size: contain;
   background-position: center;
   cursor: pointer;
+  
 }
 
 .section-two {
@@ -64,8 +98,31 @@ header {
 
 .player-one {
   margin: 0 0 0 50px;
+  font-size: large;
+  text-align: center;
 }
 
 .player-two {
   margin: 0 50px 0 0;
+  font-size: large;
+  text-align: center;
+}
+
+img.P1CHANEL {
+  width: 300px;
+  height: 130px;
+  text-align: left;
+}
+
+img.P1YSL {
+  width: 200px;
+  height: 150px;
+  text-align: right;
+}
+
+.winner {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
 }

@@ -1,23 +1,27 @@
 function init() {
 
   const grid = document.querySelector('.grid')
+  const scoreOneDisplay = document.querySelector('#scoreOne')
+  const scoreTwoDisplay = document.querySelector('#scoreTwo')
+
+  let scoreOne = 0
+  let scoreTwo = 0
 
   const width = 6
   const height = 7
   const cellCount = width * height
   const cells = []
 
-  // console.log('grid', grid)
-  // console.log('cells', cells)
-
   const allPlayers = ['player one', 'player two']
   let currentPlayer = allPlayers[0]
 
   const playerOneChoice = []
+  let currentIndex = playerOneChoice[0]
   const playerTwoChoice = []
 
-  // console.log('playerChoiceOne',playerOneChoice)
-  // console.log('playerChoiceTwo',playerTwoChoice)
+
+  console.log('playerChoiceOne',playerOneChoice)
+  console.log('playerChoiceTwo',playerTwoChoice)
 
 
   function createGrid() {
@@ -30,20 +34,15 @@ function init() {
 
   }
 
-// if player 1 choose chanel, if player 2 choose ysl
-// 
-
-// step 2 , push elemt from exisitng array into a new array based on the event listener
-
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
       event.target.classList.add('chanel')   
 
       const choice = event.target.innerText
       playerOneChoice.push(Number(choice))
-      
-      currentPlayer = allPlayers[1]      
-      
+
+      currentPlayer = allPlayers[1]
+
     } else {
       event.target.classList.add('ysl')
 
@@ -51,15 +50,53 @@ function init() {
       playerTwoChoice.push(Number(Secondchoice))
 
       currentPlayer = allPlayers[0]
-    }
+    }  
 
   }
 
+  function winningChoices(event) {
+    if (currentIndex === playerOneChoice[0]++) {
+      return playerOneChoice[1]
+    } else {
+      return playerOneChoice.pop()
+    }
+  }
+
+  function showWinner(event) {
+    if (playerOneChoice.length === 4) {
+      scoreOne++
+      scoreOneDisplay.innerText = scoreOne
+    } else if (playerTwoChoice.length === 4) {
+      scoreTwo++
+      scoreTwoDisplay.innerText = scoreTwo
+    } else {
+      return 'Its a draw!'
+    }
+    console.log('I am the winner', showWinner)
+  }
+
   document.addEventListener('click', startGame)
+  document.addEventListener('click', showWinner)
+  document.addEventListener('click', winningChoices)
+
 
   createGrid()
+  winningChoices()
+  showWinner()
 
 
+
+  // function mouseEnter(event){
+  //   event.target.src = 'images/small-boy-chanel-handbag-blue-grained-.png'
+  // }
+
+  // function mouseLeave(event) {
+  //   event.target = event.target.classList.remove('chanel')
+  // }
+
+
+  // document.addEventListener('mouseenter', mouseEnter)
+  // document.addEventListener('mouseleave', mouseLeave)
 
 
 
