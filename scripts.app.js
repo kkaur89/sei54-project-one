@@ -6,6 +6,7 @@ function init() {
 
   let scoreOne = 0
   let scoreTwo = 0
+  let connectTimer
 
   const width = 6
   const height = 7
@@ -22,6 +23,8 @@ function init() {
 
   console.log('playerChoiceOne',playerOneChoice)
   console.log('playerChoiceTwo',playerTwoChoice)
+
+
 
 
   function createGrid() {
@@ -54,6 +57,8 @@ function init() {
 
   }
 
+// this is pulling back an empty array
+
   function winningChoices(event) {
     if (currentIndex === playerOneChoice[0]++) {
       return playerOneChoice[1]
@@ -62,18 +67,27 @@ function init() {
     }
   }
 
+
+  // should I be using a for loop here???
+
   function showWinner(event) {
-    if (playerOneChoice.length === 4) {
-      scoreOne++
-      scoreOneDisplay.innerText = scoreOne
-    } else if (playerTwoChoice.length === 4) {
-      scoreTwo++
-      scoreTwoDisplay.innerText = scoreTwo
-    } else {
-      return 'Its a draw!'
-    }
-    console.log('I am the winner', showWinner)
+    connectTimer = setInterval(() => {
+      if (playerOneChoice.length === 4) {
+        scoreOne++
+        scoreOneDisplay.innerText = scoreOne
+        clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
+      } else if (playerTwoChoice.length === 4) {
+        scoreTwo++
+        scoreTwoDisplay.innerText = scoreTwo
+        clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
+      } else {
+        return 'Its a draw!'
+      }
+      console.log('I am the winner', showWinner)
+    }, 9000)
   }
+
+  
 
   document.addEventListener('click', startGame)
   document.addEventListener('click', showWinner)
