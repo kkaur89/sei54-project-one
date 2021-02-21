@@ -41,11 +41,15 @@ img.selfridges {
   background-image: url("../images/Screenshot\ 2021-02-20\ at\ 15.32.47.png");
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 
 .grid-wrapper{
   justify-content: center;
+
 }
+
+
 
 .grid {
   margin: 50px 0 0 0;
@@ -61,6 +65,18 @@ img.selfridges {
   height: 650px;
   width: 800px;
 
+}
+
+/* tryig to overlap both images */
+
+img.grid {
+  z-index: 1;
+  position: relative;
+}
+
+img.floor {
+  z-index: -1;
+  position: relative;
 }
 
 .grid div {

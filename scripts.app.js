@@ -3,6 +3,7 @@ function init() {
   const grid = document.querySelector('.grid')
   const scoreOneDisplay = document.querySelector('#scoreOne')
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
+  const winnerElement = document.querySelector('.winner')
 
   let scoreOne = 0
   let scoreTwo = 0
@@ -35,6 +36,10 @@ function init() {
       cells.push(cell)
     }
 
+  }
+
+  function hideWinnerElement(event) {
+    event.target.classList.remove('winner')
   }
 
   function startGame(event) {
@@ -92,6 +97,8 @@ function init() {
   document.addEventListener('click', startGame)
   document.addEventListener('click', showWinner)
   document.addEventListener('click', winningChoices)
+
+  winnerElement.addEventListener('load', hideWinnerElement)
 
 
   createGrid()
