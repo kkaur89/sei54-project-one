@@ -2,12 +2,14 @@ function init() {
 
   const grid = document.querySelector('.grid')
   const scoreOneDisplay = document.querySelector('#scoreOne')
-  const scoreTwoDisplay = document.querySelector('#scoreTwo')
-  const winnerElement = document.querySelector('.winner')
+  // const scoreTwoDisplay = document.querySelector('#scoreTwo')
+  // const winnerElement = document.querySelector('.winner')
+  // const endGame = document.querySelector('.finish')
+  // const restartGame = document.querySelector('.start-again')
 
   let scoreOne = 0
-  let scoreTwo = 0
-  let connectTimer
+  // let scoreTwo = 0
+  // let connectTimer
 
   const width = 6
   const height = 7
@@ -18,12 +20,11 @@ function init() {
   let currentPlayer = allPlayers[0]
 
   const playerOneChoice = []
-  let currentIndex = playerOneChoice[0]
   const playerTwoChoice = []
 
-
   console.log('playerChoiceOne',playerOneChoice)
-  console.log('playerChoiceTwo',playerTwoChoice)
+  console.log('playerTwoChoice', playerTwoChoice)
+
 
 
 
@@ -42,71 +43,105 @@ function init() {
   //   event.target.classList.remove('winner')     // this is the winner element which I only want to appear when there has been a winner. This is not currently working
   // }
 
+
+  // bug - this allows the user to click in a cell that has already been used and replace with their option
+
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
       event.target.classList.add('chanel')   
 
-      const choice = event.target.innerText   
-      playerOneChoice.push(Number(choice))    // this works and pushes all options into the array
+      const choice = event.target.innerText
+
+      while (event.target.value++ === ('chanel')) {
+        playerOneChoice.push(Number(choice))  
+
+        if (playerOneChoice.length === 4) {
+          scoreOne++
+          scoreOneDisplay.innerText = scoreOne
+        }  
+      }
 
       currentPlayer = allPlayers[1]
 
     } else {
       event.target.classList.add('ysl')
 
-      const Secondchoice = event.target.innerText
-      playerTwoChoice.push(Number(Secondchoice))
+      // const Secondchoice = event.target.innerText
+      // playerTwoChoice.push(Number(Secondchoice))
 
+      // while (event.target++ === 'ysl') {
+      //   playerTwoChoice.push(Number(Secondchoice))
+      // }
+      // console.log('playerChoiceTwo',playerTwoChoice)
+      
       currentPlayer = allPlayers[0]
     }  
 
   }
 
-// this is pulling back an empty array
 
-  function winningChoices(event) {
-    if (currentIndex === playerOneChoice[0]++ || playerOneChoice[0]--) {   // started with just trying to figure out the row option first, need add modulus operator so that they cannot select option off the grid
-      return playerOneChoice[1]
-    } else {
-      return playerOneChoice.pop()
-    }
-  }
+
+// this is pulling back an empty array, only started this with player one
+
+  // function winningChoices(event) {
+  //   if (currentIndex === playerOneChoice[0]++ || currentIndex === playerOneChoice[0]--) {   // started with just trying to figure out the row option first, need add modulus operator so that they cannot select option off the grid
+  //     return playerOneChoice[1]
+  //   } else {
+  //     return playerOneChoice.pop()
+  //   }
+  // }
 
 
   // should I be using a for loop here???  
   // this removes all but one element on the page but one at a time
   // not sure if I even needed a timer here but could not get it to clear the page without one.
+  // also at the moment this is allowing both users to win, I need the game to end on the first winner
 
-  function showWinner(event) {
-    connectTimer = setInterval(() => {
-      if (playerOneChoice.length === 4) {
-        scoreOne++
-        scoreOneDisplay.innerText = scoreOne
-        clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
-      } else if (playerTwoChoice.length === 4) {
-        scoreTwo++
-        scoreTwoDisplay.innerText = scoreTwo
-        clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
-      } else {
-        return 'Its a draw!'
-      }
-      console.log('I am the winner', showWinner)
-      clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
-    }, 9000)
-  }
+  // function showWinner(event) {
+  //   connectTimer = setInterval(() => {
+  //     if (playerOneChoice.length === 4) {
+  //       scoreOne++
+  //       scoreOneDisplay.innerText = scoreOne
+  //       clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
+  //       event.target.classList.add('winner')   //this is when I want the winner HTML element to come up on top of the grid
+
+  //     } else if (playerTwoChoice.length === 4) {
+  //       scoreTwo++
+  //       scoreTwoDisplay.innerText = scoreTwo
+  //       clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
+  //       event.target.classList.add('winner')
+
+  //     } else {
+  //       return 'Its a draw!'
+  //     }
+  //     console.log('I am the winner', showWinner)
+  //     clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
+  //     event.target.classList.add('winner')
+  //   }, 9000)
+  // }
+
+  // function gameOver(event) {
+
+  // }
+
+  // function playAgain(event) {
+
+  // }
 
   
 
   document.addEventListener('click', startGame)
-  document.addEventListener('click', showWinner)
-  document.addEventListener('click', winningChoices)
+  // document.addEventListener('click', showWinner)
+  // document.addEventListener('click', winningChoices)
+  // endGame.addEventListener('click', gameOver)
+  // restartGame.addEventListener('click', playAgain)
 
   // winnerElement.addEventListener('load', hideWinnerElement)
 
 
   createGrid()
-  winningChoices()
-  showWinner()
+  // winningChoices()
+  // showWinner()
 
 
 

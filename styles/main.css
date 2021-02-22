@@ -136,6 +136,7 @@ img.P1YSL {
   text-align: right;
 }
 
+/* how do use z-index? */
 .winner {
   position: absolute;
   left: 0px;
