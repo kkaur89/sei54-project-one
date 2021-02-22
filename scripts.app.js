@@ -190,7 +190,7 @@ function init() {
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
+      // console.log('playerOne', playerOneChoice)
       playerOneChoice = []
 
       playerOneChoice.push(choice)
@@ -209,7 +209,7 @@ function init() {
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
+      // console.log('playerOne', playerOneChoice)
 
       playerOneChoice = []
  
@@ -218,165 +218,164 @@ function init() {
     } else {
       event.target.classList.add('ysl')
 
-      const Secondchoice = (Number(event.target.id))
-      playerTwoChoice.push(Secondchoice)
+      const secondChoice = (Number(event.target.id))
+      playerTwoChoice.push(secondChoice)
 
       let index = 1
 
       // FIRST WHILE LOOP = LEFT AND RIGHT
 
-      while (cells[choice + index].classList.contains('ysl')) {
-        playerTwoChoice.push(choice + index)  
+      while (cells[secondChoice + index].classList.contains('ysl')) {
+        playerTwoChoice.push(secondChoice + index)  
  
 
         index++
 
         if (playerTwoChoice.length === 4) {
-          console.log('win')
+          console.log('Player 2 win')
           scoreTwo++
-          scoreOneDisplay.innerText = `SCORE: ${scoreTwo}`
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
 
         }  
       }
 
       index = 1
 
-      while (cells[choice - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice - index)
+      while (cells[secondChoice - index].classList.contains('ysl')) {
+        playerTwoChoice.push(secondChoice - index)
 
         index++
         
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         }
 
       }
 
-      playerOneChoice = [] 
+      playerTwoChoice = [] 
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
-      playerOneChoice.push(choice)
+      playerTwoChoice.push(secondChoice)
       index = width - 1
 
-      while (cells[choice + index].classList.contains('chanel')) {
+      while (cells[secondChoice + index].classList.contains('ysl')) {
        
-        playerOneChoice.push(choice + index)
+        playerTwoChoice.push(secondChoice + index)
 
         index = index + width - 1
 
        
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         } 
         
       }
-      playerOneChoice = []
+      playerTwoChoice = []
 
-      playerOneChoice.push(choice)
+      playerTwoChoice.push(secondChoice)
       index = width + 1
       
 
-      while (cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
-
+      while (cells[secondChoice + index].classList.contains('ysl')) {
+        playerOneChoice.push(secondChoice + index)
         index = index + width + 1
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         } 
         
       }
 
-      playerOneChoice = []
+      playerTwoChoice = []
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-      playerOneChoice.push(choice)
+      playerTwoChoice.push(secondChoice)
 
       index = width - 1
       
 
-      while (cells[choice - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice - index)
+      while (cells[secondChoice - index].classList.contains('ysl')) {
+        playerOneChoice.push(secondChoice - index)
 
         index = index + width - 1
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         } 
         
       }
 
-      playerOneChoice = []
+      playerTwoChoice = []
 
-      playerOneChoice.push(choice)
+      playerTwoChoice.push(secondChoice)
 
       index = width + 1
 
-      while (cells[choice - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice - index)
+      while (cells[secondChoice - index].classList.contains('ysl')) {
+        playerTwoChoice.push(secondChoice - index)
 
         index = index + width + 1
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         } 
         
       }
     
-      playerOneChoice = []
+      playerTwoChoice = []
 
       // FOURTH CHOICE - UP AND DOWN
-      playerOneChoice.push(choice)
+      playerTwoChoice.push(secondChoice)
 
       index = 0 - width
 
-      while (cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
+      while (cells[secondChoice + index].classList.contains('ysl')) {
+        playerTwoChoice.push(secondChoice + index)
 
         index = index - width
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
-      playerOneChoice = []
+      // console.log('playerTwo', playerTwoChoice)
+      playerTwoChoice = []
 
-      playerOneChoice.push(choice)
+      playerTwoChoice.push(secondChoice)
 
       index = 0 + width
 
-      while (cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
+      while (cells[secondChoice + index].classList.contains('ysl')) {
+        playerTwoChoice.push(secondChoice + index)
 
         index = index + width 
 
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        if (playerTwoChoice.length === 4) {
+          console.log('Player 2 win')
+          scoreTwo++
+          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
+      // console.log('playerTwo', playerTwoChoice)
 
-      playerOneChoice = []
+      playerTwoChoice = []
       
       currentPlayer = allPlayers[0]
     }  
