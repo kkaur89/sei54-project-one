@@ -38,16 +38,16 @@ function init() {
 
   }
 
-  function hideWinnerElement(event) {
-    event.target.classList.remove('winner')
-  }
+  // function hideWinnerElement(event) {
+  //   event.target.classList.remove('winner')     // this is the winner element which I only want to appear when there has been a winner. This is not currently working
+  // }
 
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
       event.target.classList.add('chanel')   
 
-      const choice = event.target.innerText
-      playerOneChoice.push(Number(choice))
+      const choice = event.target.innerText   
+      playerOneChoice.push(Number(choice))    // this works and pushes all options into the array
 
       currentPlayer = allPlayers[1]
 
@@ -65,7 +65,7 @@ function init() {
 // this is pulling back an empty array
 
   function winningChoices(event) {
-    if (currentIndex === playerOneChoice[0]++) {
+    if (currentIndex === playerOneChoice[0]++ || playerOneChoice[0]--) {   // started with just trying to figure out the row option first, need add modulus operator so that they cannot select option off the grid
       return playerOneChoice[1]
     } else {
       return playerOneChoice.pop()
@@ -73,7 +73,9 @@ function init() {
   }
 
 
-  // should I be using a for loop here???
+  // should I be using a for loop here???  
+  // this removes all but one element on the page but one at a time
+  // not sure if I even needed a timer here but could not get it to clear the page without one.
 
   function showWinner(event) {
     connectTimer = setInterval(() => {
@@ -89,6 +91,7 @@ function init() {
         return 'Its a draw!'
       }
       console.log('I am the winner', showWinner)
+      clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
     }, 9000)
   }
 
@@ -98,13 +101,18 @@ function init() {
   document.addEventListener('click', showWinner)
   document.addEventListener('click', winningChoices)
 
-  winnerElement.addEventListener('load', hideWinnerElement)
+  // winnerElement.addEventListener('load', hideWinnerElement)
 
 
   createGrid()
   winningChoices()
   showWinner()
 
+
+
+
+
+  // The below is where I want the images to hover at the top of the grid before appearing on the selected cell.
 
 
   // function mouseEnter(event){
