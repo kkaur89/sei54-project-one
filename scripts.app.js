@@ -16,14 +16,13 @@ function init() {
   const cellCount = width * height
   const cells = []
 
+  // console.log(width)
+
   const allPlayers = ['player one', 'player two']
   let currentPlayer = allPlayers[0]
 
-  const playerOneChoice = []
-  const playerTwoChoice = []
-
-  console.log('playerChoiceOne',playerOneChoice)
-  console.log('playerTwoChoice', playerTwoChoice)
+  let playerOneChoice = []
+  let playerTwoChoice = []
 
 
 
@@ -33,11 +32,13 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.textContent = i
+      cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
     }
-
   }
+
+  // console.log(cells)
 
   // function hideWinnerElement(event) {
   //   event.target.classList.remove('winner')     // this is the winner element which I only want to appear when there has been a winner. This is not currently working
@@ -50,17 +51,61 @@ function init() {
     if (currentPlayer === allPlayers[0]) {
       event.target.classList.add('chanel')   
 
-      const choice = event.target.innerText
+      let choice = Number(event.target.id)
 
-      while (event.target.value++ === ('chanel')) {
-        playerOneChoice.push(Number(choice))  
+      playerOneChoice.push(choice)
+      // console.log('playerChoiceOne',playerOneChoice)   
+
+      let index = 1
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+        // console.log('playerChoiceOne',playerOneChoice)   
+ 
+
+        index++
 
         if (playerOneChoice.length === 4) {
+          console.log('win')
           scoreOne++
-          scoreOneDisplay.innerText = scoreOne
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+
         }  
       }
 
+      index = 1
+
+      while (cells[choice - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice - index)
+
+        index++
+        
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        }
+        // console.log('playerOne',playerOneChoice)
+      }
+
+      index = 1
+
+      while (cells[choice += width - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice += width - index)
+
+        index++
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        console.log('playerOne', playerOneChoice)
+      }
+
+      playerOneChoice = []
+ 
       currentPlayer = allPlayers[1]
 
     } else {
