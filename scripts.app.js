@@ -2,13 +2,13 @@ function init() {
 
   const grid = document.querySelector('.grid')
   const scoreOneDisplay = document.querySelector('#scoreOne')
-  // const scoreTwoDisplay = document.querySelector('#scoreTwo')
+  const scoreTwoDisplay = document.querySelector('#scoreTwo')
   // const winnerElement = document.querySelector('.winner')
   // const endGame = document.querySelector('.finish')
   // const restartGame = document.querySelector('.start-again')
 
   let scoreOne = 0
-  // let scoreTwo = 0
+  let scoreTwo = 0
   // let connectTimer
 
   const width = 6
@@ -51,16 +51,17 @@ function init() {
     if (currentPlayer === allPlayers[0]) {
       event.target.classList.add('chanel')   
 
-      let choice = Number(event.target.id)
+      const choice = Number(event.target.id)
 
       playerOneChoice.push(choice)
-      // console.log('playerChoiceOne',playerOneChoice)   
+ 
 
       let index = 1
 
+      // FIRST WHILE LOOP = LEFT AND RIGHT
+
       while (cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
-        // console.log('playerChoiceOne',playerOneChoice)   
+        playerOneChoice.push(choice + index)  
  
 
         index++
@@ -86,23 +87,129 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
         }
-        // console.log('playerOne',playerOneChoice)
+
       }
 
-      index = 1
+      playerOneChoice = [] 
 
-      while (cells[choice += width - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice += width - index)
+      // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
+      playerOneChoice.push(choice)
+      index = width - 1
 
-        index++
+      while (cells[choice + index].classList.contains('chanel')) {
+       
+        playerOneChoice.push(choice + index)
+
+        index = index + width - 1
+
+       
 
         if (playerOneChoice.length === 4) {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
         } 
-        console.log('playerOne', playerOneChoice)
+        
       }
+      playerOneChoice = []
+
+      playerOneChoice.push(choice)
+      index = width + 1
+      
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+
+        index = index + width + 1
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+
+      playerOneChoice = []
+
+      // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
+
+      playerOneChoice.push(choice)
+
+      index = width - 1
+      
+
+      while (cells[choice - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice - index)
+
+        index = index + width - 1
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+
+      playerOneChoice = []
+
+      playerOneChoice.push(choice)
+
+      index = width + 1
+
+      while (cells[choice - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice - index)
+
+        index = index + width + 1
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+    
+      playerOneChoice = []
+
+      // FOURTH CHOICE - UP AND DOWN
+      playerOneChoice.push(choice)
+
+      index = 0 - width
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+
+        index = index - width
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+      console.log('playerOne', playerOneChoice)
+      playerOneChoice = []
+
+      playerOneChoice.push(choice)
+
+      index = 0 + width
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+
+        index = index + width 
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+      console.log('playerOne', playerOneChoice)
 
       playerOneChoice = []
  
@@ -111,13 +218,165 @@ function init() {
     } else {
       event.target.classList.add('ysl')
 
-      // const Secondchoice = event.target.innerText
-      // playerTwoChoice.push(Number(Secondchoice))
+      const Secondchoice = (Number(event.target.id))
+      playerTwoChoice.push(Secondchoice)
 
-      // while (event.target++ === 'ysl') {
-      //   playerTwoChoice.push(Number(Secondchoice))
-      // }
-      // console.log('playerChoiceTwo',playerTwoChoice)
+      let index = 1
+
+      // FIRST WHILE LOOP = LEFT AND RIGHT
+
+      while (cells[choice + index].classList.contains('ysl')) {
+        playerTwoChoice.push(choice + index)  
+ 
+
+        index++
+
+        if (playerTwoChoice.length === 4) {
+          console.log('win')
+          scoreTwo++
+          scoreOneDisplay.innerText = `SCORE: ${scoreTwo}`
+
+        }  
+      }
+
+      index = 1
+
+      while (cells[choice - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice - index)
+
+        index++
+        
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        }
+
+      }
+
+      playerOneChoice = [] 
+
+      // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
+      playerOneChoice.push(choice)
+      index = width - 1
+
+      while (cells[choice + index].classList.contains('chanel')) {
+       
+        playerOneChoice.push(choice + index)
+
+        index = index + width - 1
+
+       
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+      playerOneChoice = []
+
+      playerOneChoice.push(choice)
+      index = width + 1
+      
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+
+        index = index + width + 1
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+
+      playerOneChoice = []
+
+      // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
+
+      playerOneChoice.push(choice)
+
+      index = width - 1
+      
+
+      while (cells[choice - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice - index)
+
+        index = index + width - 1
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+
+      playerOneChoice = []
+
+      playerOneChoice.push(choice)
+
+      index = width + 1
+
+      while (cells[choice - index].classList.contains('chanel')) {
+        playerOneChoice.push(choice - index)
+
+        index = index + width + 1
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+    
+      playerOneChoice = []
+
+      // FOURTH CHOICE - UP AND DOWN
+      playerOneChoice.push(choice)
+
+      index = 0 - width
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+
+        index = index - width
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+      console.log('playerOne', playerOneChoice)
+      playerOneChoice = []
+
+      playerOneChoice.push(choice)
+
+      index = 0 + width
+
+      while (cells[choice + index].classList.contains('chanel')) {
+        playerOneChoice.push(choice + index)
+
+        index = index + width 
+
+        if (playerOneChoice.length === 4) {
+          console.log('win')
+          scoreOne++
+          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        } 
+        
+      }
+      console.log('playerOne', playerOneChoice)
+
+      playerOneChoice = []
       
       currentPlayer = allPlayers[0]
     }  
@@ -126,15 +385,17 @@ function init() {
 
 
 
-// this is pulling back an empty array, only started this with player one
 
-  // function winningChoices(event) {
-  //   if (currentIndex === playerOneChoice[0]++ || currentIndex === playerOneChoice[0]--) {   // started with just trying to figure out the row option first, need add modulus operator so that they cannot select option off the grid
-  //     return playerOneChoice[1]
-  //   } else {
-  //     return playerOneChoice.pop()
-  //   }
-  // }
+
+
+
+
+
+
+
+
+
+
 
 
   // should I be using a for loop here???  
