@@ -65,7 +65,7 @@ function init() {
         choice = choice - width
       }
       
-      cells[choice].classList.add('chanel', 'fall')  // need to find empty cell from the bottom and then drop (from target.id, 41--??)
+      cells[choice].classList.add('chanel', 'fall')  
       playerOneChoice.push(choice)
 
       let index = 1
@@ -86,9 +86,9 @@ function init() {
          
         }  
       }
-      console.log('playerOne', playerOneChoice)
 
-      playerOneChoice = [] 
+
+  
 
       index = 1
 
@@ -107,13 +107,13 @@ function init() {
         }
 
       }
-      console.log('playerOne', playerOneChoice)
 
-      playerOneChoice = [] 
+
+     
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
 
-      playerOneChoice.push(choice)
+   
 
       index = width - 1
 
@@ -133,16 +133,16 @@ function init() {
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
-      playerOneChoice = []
+  
+    
 
       
 
-      playerOneChoice.push(choice)
+
       index = width + 1
       
 
-      while ((choice+index) % width !== width - 1 && (choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) % width !== width - 1 && (choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
 
         index = index + width + 1
@@ -155,12 +155,12 @@ function init() {
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
-      playerOneChoice = []
+ 
+     
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-      playerOneChoice.push(choice)
+     
 
       index = width - 1
       
@@ -178,10 +178,10 @@ function init() {
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
-      playerOneChoice = []
+    
+  
 
-      playerOneChoice.push(choice)
+
 
       index = width + 1
 
@@ -198,12 +198,12 @@ function init() {
         } 
         
       }
-      console.log('playerOne', playerOneChoice)
-      playerOneChoice = []
+     
+    
 
       // FOURTH LOOP - UP AND DOWN
 
-      playerOneChoice.push(choice)
+     
 
       index = 0 - width
 
@@ -221,15 +221,15 @@ function init() {
         
       }
       // console.log('playerOne', playerOneChoice)
-      playerOneChoice = []
+   
 
       // STARTS FROM THE BOTTOM AND IS GOING UP
 
-      playerOneChoice.push(choice)
+ 
 
       index = 0 + width
 
-      while ((cells + choice) + width <= width * width - 1 && cells[choice + index].classList.contains('chanel') && cells[choice + index] <= width) {
+      while ((cells + choice) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel') && cells[choice + index] <= width) {
         playerOneChoice.push(choice + index)
 
         index = index + width 
@@ -250,17 +250,23 @@ function init() {
       
 
     } else {
-      console.log('working')
-      event.target.classList.add('ysl', 'fall')
 
-      const secondChoice = (Number(event.target.id))
+
+      let secondChoice = Number(event.target.id) % width + 36
+
+      while (cells[secondChoice].classList.contains('chanel') || (cells[secondChoice].classList.contains('ysl'))) {
+        secondChoice = secondChoice - width
+      }
+      
+      cells[secondChoice].classList.add('ysl', 'fall')  
+
       playerTwoChoice.push(secondChoice)
 
       let index = 1
 
       // FIRST WHILE LOOP = LEFT AND RIGHT
 
-      while (cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) % width !== 0 && cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)  
  
 
@@ -277,7 +283,7 @@ function init() {
 
       index = 1
 
-      while (cells[secondChoice - index].classList.contains('ysl')) {
+      while ((secondChoice - index) % width !== width - 1 && cells[secondChoice - index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice - index)
 
         index++
@@ -298,7 +304,7 @@ function init() {
       playerTwoChoice.push(secondChoice)
       index = width - 1
 
-      while (cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) % width !== 0 && (secondChoice + index) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
        
         playerTwoChoice.push(secondChoice + index)
 
@@ -320,7 +326,7 @@ function init() {
       index = width + 1
       
 
-      while (cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) % width !== width - 1 && (secondChoice + index) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
         playerOneChoice.push(secondChoice + index)
         index = index + width + 1
 
@@ -342,7 +348,7 @@ function init() {
       index = width - 1
       
 
-      while (cells[secondChoice - index].classList.contains('ysl')) {
+      while ((secondChoice - index) % width !== 0 && (secondChoice - index) >= width && cells[secondChoice - index].classList.contains('ysl')) {
         playerOneChoice.push(secondChoice - index)
 
         index = index + width - 1
@@ -362,7 +368,7 @@ function init() {
 
       index = width + 1
 
-      while (cells[secondChoice - index].classList.contains('ysl')) {
+      while ((secondChoice - index) % width !== 0 && (secondChoice - index) + width <= width * height - 1 && cells[secondChoice - index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice - index)
 
         index = index + width + 1
@@ -383,7 +389,7 @@ function init() {
 
       index = 0 + width
 
-      while (cells[secondChoice + index].classList.contains('ysl')) {
+      while ((cells + secondChoice) >= width && cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)
 
         index = index - width
@@ -403,7 +409,7 @@ function init() {
 
       index = 0 + width
 
-      while (cells[secondChoice + index].classList.contains('ysl')) {
+      while ((cells + secondChoice) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)
 
         index = index + width 
