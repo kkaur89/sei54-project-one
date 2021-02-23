@@ -143,7 +143,7 @@ img.P1YSL {
   top: 0px;
   z-index: -1;
 }
-
+/*
 .grid div:hover {
   background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), url("../images/small-boy-chanel-handbag-blue-grained-.png");
   background-size: cover;
@@ -157,6 +157,7 @@ img.P1YSL {
   background-position: bottom;
 
 }
+*/
 
 .P1CHANEL.pulse {
   animation: pulse 3s infinite;
@@ -178,5 +179,19 @@ img.P1YSL {
   to {
       transform : scale(1);
       opacity   : 1;
+  }
+}
+
+.fall {
+  animation-name: fall-animation;
+  animation-duration: 500ms;
+}
+
+@keyframes fall-animation {
+  from {
+    transform: translateY(-500px);
+  }
+  to {
+    transform: translateY(0);
   }
 }

@@ -54,7 +54,7 @@ function init() {
 
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
-      event.target.classList.add('chanel')
+      event.target.classList.add('chanel', 'fall')
 
       const choice = Number(event.target.id)
 
@@ -223,7 +223,7 @@ function init() {
       currentPlayer = allPlayers[1]
 
     } else {
-      event.target.classList.add('ysl')
+      event.target.classList.add('ysl', 'fall')
 
       const secondChoice = (Number(event.target.id))
       playerTwoChoice.push(secondChoice)
@@ -445,6 +445,7 @@ function init() {
   
 
   document.addEventListener('click', startGame)
+  // dropChanel.addEventListener('drop', startGame)
   // document.addEventListener('click', showWinner)
   // document.addEventListener('click', winningChoices)
   // endGame.addEventListener('click', gameOver)
