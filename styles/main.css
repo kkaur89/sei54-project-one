@@ -35,22 +35,6 @@ img.selfridges {
   justify-content: center;
 }
 
-.floor {
-  width: 1000px;
-  height: 150px;
-  background-image: url("../images/Screenshot\ 2021-02-20\ at\ 15.32.47.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-
-}
-
-.grid-wrapper{
-  justify-content: center;
-
-}
-
-
-
 .grid {
   margin: 50px 0 0 0;
   align-items: center;
@@ -64,20 +48,39 @@ img.selfridges {
   justify-content: center;
   height: 650px;
   width: 800px;
+  position: relative;
+}
+.floor {
+  width: 1000px;
+  height: 150px;
+  background-image: url("../images/Screenshot\ 2021-02-20\ at\ 15.32.47.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 150px;
+  z-index: -1;
 
 }
+
+.grid-wrapper{
+  justify-content: center;
+
+}
+
+
+
+
 
 /* tryig to overlap both images */
 
-img.grid {
-  z-index: 1;
-  position: relative;
+/*img.grid {
+  position: absolute;
+  bottom: 20px;
 }
 
 img.floor {
-  z-index: -1;
   position: relative;
-}
+} */
 
 .grid div {
   text-align: center;
@@ -113,13 +116,13 @@ img.floor {
 }
 
 .player-one {
-  margin: 0 0 0 50px;
+  margin: 0 50 0 20px;
   font-size: large;
   text-align: center;
 }
 
 .player-two {
-  margin: 0 50px 0 0;
+  margin: 0 20px 0 50;
   font-size: large;
   text-align: center;
 }

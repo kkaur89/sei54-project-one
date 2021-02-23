@@ -3,7 +3,6 @@ function init() {
   const grid = document.querySelector('.grid')
   const chanel = document.querySelector('.P1CHANEL')
   const ysl = document.querySelector('.P1YSL')
-  const dropChanel = document.querySelector('.grid div.chanel')
   const scoreOneDisplay = document.querySelector('#scoreOne')
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
   // const winnerElement = document.querySelector('.winner')
@@ -19,7 +18,7 @@ function init() {
   const cellCount = width * height
   const cells = []
 
-  // console.log(width)
+
 
   const allPlayers = ['player one', 'player two']
   let currentPlayer = allPlayers[0]
@@ -52,20 +51,28 @@ function init() {
 
   // bug - this allows the user to click in a cell that has already been used and replace with their option
 
+  // move the winning options into a seperate function and then call it in this function
+  // add another if statment to ensure the user can only pick from empty cells starting at the bottom
+  //  if 0 + width * 7
+
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
-      event.target.classList.add('chanel', 'fall')
 
-      const choice = Number(event.target.id)
+      let choice = Number(event.target.id) % width + 36
+      console.log('choice',choice)
 
+      while (cells[choice].classList.contains('chanel') || (cells[choice].classList.contains('ysl'))) {
+        choice = choice - width
+      }
+      
+      cells[choice].classList.add('chanel', 'fall')  // need to find empty cell from the bottom and then drop (from target.id, 41--??)
       playerOneChoice.push(choice)
- 
 
       let index = 1
 
       // FIRST WHILE LOOP = LEFT AND RIGHT
 
-      while (cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) % width !== 0 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)  
  
 
@@ -76,13 +83,16 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-
+         
         }  
       }
+      console.log('playerOne', playerOneChoice)
+
+      playerOneChoice = [] 
 
       index = 1
 
-      while (cells[choice - index].classList.contains('chanel')) {
+      while ((choice - index) % width !== width - 1 && cells[choice - index].classList.contains('chanel')) {
         playerOneChoice.push(choice - index)
 
         index++
@@ -93,17 +103,21 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.add('pulse')
+         
         }
 
       }
+      console.log('playerOne', playerOneChoice)
 
       playerOneChoice = [] 
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
+
       playerOneChoice.push(choice)
+
       index = width - 1
 
-      while (cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) % width !== 0 && (choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
        
         playerOneChoice.push(choice + index)
 
@@ -115,16 +129,20 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
         } 
         
       }
+      console.log('playerOne', playerOneChoice)
       playerOneChoice = []
+
+      
 
       playerOneChoice.push(choice)
       index = width + 1
       
 
-      while (cells[choice + index].classList.contains('chanel')) {
+      while ((choice+index) % width !== width - 1 && (choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
 
         index = index + width + 1
@@ -133,10 +151,11 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
         } 
         
       }
-
+      console.log('playerOne', playerOneChoice)
       playerOneChoice = []
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
@@ -146,7 +165,7 @@ function init() {
       index = width - 1
       
 
-      while (cells[choice - index].classList.contains('chanel')) {
+      while ((choice - index) % width !== 0 && (choice - index) >= width && cells[choice - index].classList.contains('chanel')) {
         playerOneChoice.push(choice - index)
 
         index = index + width - 1
@@ -155,17 +174,18 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
         } 
         
       }
-
+      console.log('playerOne', playerOneChoice)
       playerOneChoice = []
 
       playerOneChoice.push(choice)
 
       index = width + 1
 
-      while (cells[choice - index].classList.contains('chanel')) {
+      while ((choice - index) % width !== 0 && (choice - index) + width <= width * height - 1 && cells[choice - index].classList.contains('chanel')) {
         playerOneChoice.push(choice - index)
 
         index = index + width + 1
@@ -174,18 +194,20 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
         } 
         
       }
-    
+      console.log('playerOne', playerOneChoice)
       playerOneChoice = []
 
-      // FOURTH CHOICE - UP AND DOWN
+      // FOURTH LOOP - UP AND DOWN
+
       playerOneChoice.push(choice)
 
       index = 0 - width
 
-      while (cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) >= width && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
 
         index = index - width
@@ -194,17 +216,20 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
         } 
         
       }
       // console.log('playerOne', playerOneChoice)
       playerOneChoice = []
 
+      // STARTS FROM THE BOTTOM AND IS GOING UP
+
       playerOneChoice.push(choice)
 
       index = 0 + width
 
-      while (cells[choice + index].classList.contains('chanel')) {
+      while ((cells + choice) + width <= width * width - 1 && cells[choice + index].classList.contains('chanel') && cells[choice + index] <= width) {
         playerOneChoice.push(choice + index)
 
         index = index + width 
@@ -213,16 +238,19 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
         } 
         
       }
-      // console.log('playerOne', playerOneChoice)
+      console.log('playerOne', playerOneChoice)
 
       playerOneChoice = []
  
       currentPlayer = allPlayers[1]
+      
 
     } else {
+      console.log('working')
       event.target.classList.add('ysl', 'fall')
 
       const secondChoice = (Number(event.target.id))
@@ -259,7 +287,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
+          ysl.classList.toggle('pulse') // loop through the array cells[].classList.toogle('ysl')
         }
 
       }
@@ -282,6 +310,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         } 
         
       }
@@ -299,6 +328,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         } 
         
       }
@@ -321,6 +351,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         } 
         
       }
@@ -340,6 +371,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         } 
         
       }
@@ -349,7 +381,7 @@ function init() {
       // FOURTH CHOICE - UP AND DOWN
       playerTwoChoice.push(secondChoice)
 
-      index = 0 - width
+      index = 0 + width
 
       while (cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)
@@ -360,6 +392,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         } 
         
       }
@@ -379,6 +412,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         } 
         
       }
@@ -444,11 +478,14 @@ function init() {
 
   
 
-  document.addEventListener('click', startGame)
-  // dropChanel.addEventListener('drop', startGame)
+  grid.addEventListener('click', startGame)
+
+  // remove event listener to end game
+
+
   // document.addEventListener('click', showWinner)
-  // document.addEventListener('click', winningChoices)
-  // endGame.addEventListener('click', gameOver)
+  // document.addEventListener('click', winningChoices) 
+  // grid.removeEventListener('click', startGame, false)
   // restartGame.addEventListener('click', playAgain)
 
   // winnerElement.addEventListener('load', hideWinnerElement)
@@ -457,25 +494,6 @@ function init() {
   createGrid()
   // winningChoices()
   // showWinner()
-
-
-
-
-
-  // The below is where I want the images to hover at the top of the grid before appearing on the selected cell.
-  // function mouseEnter(event){
-  //   event.target.classList.add('chanel:hover, overlay')
-  // }
-
-  // function mouseLeave(event) {
-  //   event.target.classList.remove('chanel:hover, overlay')
-  // }
-
-
-
-  // document.addEventListener('mouseenter', mouseEnter)
-  // document.addEventListener('mouseleave', mouseLeave)
-
 
 
 
