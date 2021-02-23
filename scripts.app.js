@@ -2,6 +2,8 @@ function init() {
 
   const grid = document.querySelector('.grid')
   const chanel = document.querySelector('.P1CHANEL')
+  const ysl = document.querySelector('.P1YSL')
+  const dropChanel = document.querySelector('.grid div.chanel')
   const scoreOneDisplay = document.querySelector('#scoreOne')
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
   // const winnerElement = document.querySelector('.winner')
@@ -240,6 +242,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
 
         }  
       }
@@ -256,6 +259,7 @@ function init() {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+          ysl.classList.toggle('pulse')
         }
 
       }

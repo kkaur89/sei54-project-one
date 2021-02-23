@@ -162,6 +162,10 @@ img.P1YSL {
   animation: pulse 3s infinite;
 }
 
+.P1YSL.pulse {
+  animation: pulse 3s infinite;
+}
+
 @keyframes pulse {
   from {
       transform : scale(1);
@@ -175,3 +179,4 @@ img.P1YSL {
       transform : scale(1);
       opacity   : 1;
   }
+}
