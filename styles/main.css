@@ -143,3 +143,35 @@ img.P1YSL {
   top: 0px;
   z-index: -1;
 }
+
+.grid div:hover {
+  background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), url("../images/small-boy-chanel-handbag-blue-grained-.png");
+  background-size: cover;
+  background-position: bottom;
+
+}
+
+.grid div:hover {
+  background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), url("../images/118-2000644-442906D420W1000_BLACKGOLD_M.png");
+  background-size: cover;
+  background-position: bottom;
+
+}
+
+.P1CHANEL.pulse {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  from {
+      transform : scale(1);
+      opacity   : 1;
+  }
+  50% {
+      transform : scale(0.75);
+      opacity   : 0.25;
+  }
+  to {
+      transform : scale(1);
+      opacity   : 1;
+  }

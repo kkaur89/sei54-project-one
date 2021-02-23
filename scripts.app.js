@@ -1,6 +1,7 @@
 function init() {
 
   const grid = document.querySelector('.grid')
+  const chanel = document.querySelector('.P1CHANEL')
   const scoreOneDisplay = document.querySelector('#scoreOne')
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
   // const winnerElement = document.querySelector('.winner')
@@ -38,6 +39,8 @@ function init() {
     }
   }
 
+
+
   // console.log(cells)
 
   // function hideWinnerElement(event) {
@@ -49,7 +52,7 @@ function init() {
 
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
-      event.target.classList.add('chanel')   
+      event.target.classList.add('chanel')
 
       const choice = Number(event.target.id)
 
@@ -70,6 +73,7 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.toggle('pulse')
 
         }  
       }
@@ -86,6 +90,7 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+          chanel.classList.add('pulse')
         }
 
       }
@@ -453,15 +458,14 @@ function init() {
 
 
   // The below is where I want the images to hover at the top of the grid before appearing on the selected cell.
-
-
   // function mouseEnter(event){
-  //   event.target.src = 'images/small-boy-chanel-handbag-blue-grained-.png'
+  //   event.target.classList.add('chanel:hover, overlay')
   // }
 
   // function mouseLeave(event) {
-  //   event.target = event.target.classList.remove('chanel')
+  //   event.target.classList.remove('chanel:hover, overlay')
   // }
+
 
 
   // document.addEventListener('mouseenter', mouseEnter)
