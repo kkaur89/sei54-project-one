@@ -7,9 +7,9 @@ function init() {
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
   const displayWinner = document.querySelector('.player-winner')
   const winnerElement = document.querySelector('.Winner')
-  const endGame = document.querySelector('.finish')
+  const endGame = document.querySelector('#finish')
   let nextPlayer = document.querySelector('.whos-turn')
-  // const restartGame = document.querySelector('.start-again')
+  const restartGame = document.querySelector('#start-again')
 
   let scoreOne = 0
   let scoreTwo = 0
@@ -35,7 +35,7 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      //cell.textContent = i
+      // cell.textContent = i
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
@@ -43,13 +43,6 @@ function init() {
   }
 
 
-
-  // console.log(cells)
-
-  function hideWinnerElement(event) {
-    // event.target.classList.remove('Winner')     // this is the winner element which I only want to appear when there has been a winner. This is not currently working
-    console.log('the event',event.target)
-  }
 
 
   // bug - this allows the user to click in a cell that has already been used and replace with their option
@@ -88,8 +81,12 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-         
-        }  
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
+        }
+          
       }
 
 
@@ -107,7 +104,11 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.add('pulse')
+          chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
          
         }
 
@@ -135,6 +136,10 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -153,6 +158,10 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -176,6 +185,10 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -196,6 +209,10 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -218,6 +235,10 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -230,8 +251,10 @@ function init() {
 
       index = 0 + width
 
-      while ((choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
+
+        console.log('choice', choice + index)
 
         index = index + width 
 
@@ -240,6 +263,10 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -279,6 +306,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
 
         }  
       }
@@ -296,6 +327,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse') // loop through the array cells[].classList.toogle('ysl')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         }
 
       }
@@ -319,6 +354,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -337,6 +376,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -360,6 +403,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -380,6 +427,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -401,6 +452,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -411,7 +466,7 @@ function init() {
 
       index = 0 + width
 
-      while ((secondChoice + index) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)
 
         index = index + width 
@@ -421,6 +476,10 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+          grid.removeEventListener('click', startGame, false)
+          playAgain()
         } 
         
       }
@@ -435,73 +494,31 @@ function init() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // should I be using a for loop here???  
-  // this removes all but one element on the page but one at a time
-  // not sure if I even needed a timer here but could not get it to clear the page without one.
-  // also at the moment this is allowing both users to win, I need the game to end on the first winner
-
-  // function showWinner(event) {
-  //   connectTimer = setInterval(() => {
-  //     if (playerOneChoice.length === 4) {
-  //       scoreOne++
-  //       scoreOneDisplay.innerText = scoreOne
-  //       clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
-  //       event.target.classList.add('winner')   //this is when I want the winner HTML element to come up on top of the grid
-
-  //     } else if (playerTwoChoice.length === 4) {
-  //       scoreTwo++
-  //       scoreTwoDisplay.innerText = scoreTwo
-  //       clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
-  //       event.target.classList.add('winner')
-
-  //     } else {
-  //       return 'Its a draw!'
-  //     }
-  //     console.log('I am the winner', showWinner)
-  //     clearInterval(connectTimer, event.target.classList.remove('chanel', 'ysl'))
-  //     event.target.classList.add('winner')
-  //   }, 9000)
-  // }
-
   // function gameOver(event) {
 
   // }
 
-  // function playAgain(event) {
+  function playAgain(event) {
+    grid.classList.remove('chanel', 'ysl')
+    scoreOne = 0
+    scoreTwo = 0
+    scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+    scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+    let currentPlayer = allPlayers[0]
 
-  // }
+  }
 
   
 
   grid.addEventListener('click', startGame)
-
-  // remove event listener to end game
-
-
-  // document.addEventListener('click', showWinner)
+  restartGame.addEventListener('click', playAgain)
   // document.addEventListener('click', winningChoices) 
-  // grid.removeEventListener('click', startGame, false)
-  // restartGame.addEventListener('click', playAgain)
+  // grid.removeEventListener('click', startGame, false)  THIS WORKS, disables the buttons
+ 
 
-  document.addEventListener('load', hideWinnerElement)
 
 
   createGrid()
-  // winningChoices()
-  // showWinner()
 
 
 
