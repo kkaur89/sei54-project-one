@@ -9,7 +9,7 @@ function init() {
   const winnerElement = document.querySelector('.Winner')
   const endGame = document.querySelector('#finish')
   let nextPlayer = document.querySelector('.whos-turn')
-  const restartGame = document.querySelector('#start-again')
+  let restartGame = document.querySelector('#start-again')
 
   let scoreOne = 0
   let scoreTwo = 0
@@ -35,7 +35,7 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      // cell.textContent = i
+      cell.textContent = i
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
@@ -68,11 +68,8 @@ function init() {
 
       let index = 1
 
-      // FIRST WHILE LOOP = LEFT AND RIGHT
-
       while ((choice + index) % width !== 0 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)  
- 
 
         index++
 
@@ -84,13 +81,11 @@ function init() {
           displayWinner.innerText = 'Player One, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+
         }
           
       }
 
-
-  
 
       index = 1
 
@@ -105,17 +100,18 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
+       
           displayWinner.innerText = 'Player One, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+
          
         }
 
       }
 
 
-     
+
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
 
@@ -123,7 +119,7 @@ function init() {
 
       index = width - 1
 
-      while ((choice + index) % width !== 0 && (choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) % width !== 0 && (choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
        
         playerOneChoice.push(choice + index)
 
@@ -139,16 +135,17 @@ function init() {
           displayWinner.innerText = 'Player One, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+
         } 
         
       }
   
+ 
 
       index = width + 1
       
 
-      while ((choice + index) % width !== width - 1 && (choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
+      while ((choice + index) % width !== width - 1 && (choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
 
         index = index + width + 1
@@ -166,7 +163,7 @@ function init() {
         
       }
  
-     
+
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
@@ -188,18 +185,19 @@ function init() {
           displayWinner.innerText = 'Player One, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+  
         } 
         
       }
     
+  
   
 
 
 
       index = width + 1
 
-      while ((choice - index) % width !== 0 && (choice - index) + width <= width * height - 1 && cells[choice - index].classList.contains('chanel')) {
+      while ((choice - index) % width !== 0 && (choice - index) <= width * height - 1 && cells[choice - index].classList.contains('chanel')) {
         playerOneChoice.push(choice - index)
 
         index = index + width + 1
@@ -212,12 +210,12 @@ function init() {
           displayWinner.innerText = 'Player One, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+
         } 
         
       }
      
-    
+   
 
       // FOURTH LOOP - UP AND DOWN
 
@@ -238,12 +236,13 @@ function init() {
           displayWinner.innerText = 'Player One, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+   
         } 
         
       }
       console.log('playerOne', playerOneChoice)
    
+      
 
       // STARTS FROM THE BOTTOM AND IS GOING UP
 
@@ -263,13 +262,18 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
-          playAgain()
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 3000)
+          console.log(myFirstTimer)
+         
         } 
         
       }
+ 
       console.log('playerOne', playerOneChoice)
 
       playerOneChoice = []
@@ -309,7 +313,7 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+    
 
         }  
       }
@@ -330,18 +334,18 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+      
         }
 
       }
-
-      playerTwoChoice = [] 
+      playerTwoChoice = []
+     
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
-      playerTwoChoice.push(secondChoice)
+
       index = width - 1
 
-      while ((secondChoice + index) % width !== 0 && (secondChoice + index) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) % width !== 0 && (secondChoice + index) <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
        
         playerTwoChoice.push(secondChoice + index)
 
@@ -357,17 +361,16 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+          
         } 
         
       }
-      playerTwoChoice = []
+      
 
-      playerTwoChoice.push(secondChoice)
       index = width + 1
       
 
-      while ((secondChoice + index) % width !== width - 1 && (secondChoice + index) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) % width !== width - 1 && (secondChoice + index) <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
         playerOneChoice.push(secondChoice + index)
         index = index + width + 1
 
@@ -379,7 +382,7 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+          
         } 
         
       }
@@ -388,7 +391,7 @@ function init() {
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-      playerTwoChoice.push(secondChoice)
+
 
       index = width - 1
       
@@ -406,18 +409,18 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+          
         } 
         
       }
 
-      playerTwoChoice = []
+    
 
-      playerTwoChoice.push(secondChoice)
+  
 
       index = width + 1
 
-      while ((secondChoice - index) % width !== 0 && (secondChoice - index) + width <= width * height - 1 && cells[secondChoice - index].classList.contains('ysl')) {
+      while ((secondChoice - index) % width !== 0 && (secondChoice - index) <= width * height - 1 && cells[secondChoice - index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice - index)
 
         index = index + width + 1
@@ -430,15 +433,15 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+          
         } 
         
       }
     
-      playerTwoChoice = []
+ 
 
       // FOURTH CHOICE - UP AND DOWN
-      playerTwoChoice.push(secondChoice)
+
 
       index = 0 - width
 
@@ -455,14 +458,14 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+          
         } 
         
       }
       // console.log('playerTwo', playerTwoChoice)
-      playerTwoChoice = []
 
-      playerTwoChoice.push(secondChoice)
+
+ 
 
       index = 0 + width
 
@@ -479,11 +482,11 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'
           grid.removeEventListener('click', startGame, false)
-          playAgain()
+          
         } 
         
       }
-      // console.log('playerTwo', playerTwoChoice)
+      console.log('playerTwo', playerTwoChoice)
 
       playerTwoChoice = []
       
@@ -499,12 +502,17 @@ function init() {
   // }
 
   function playAgain(event) {
-    grid.classList.remove('chanel', 'ysl')
+   
+    grid.classList.remove('ysl', 'chanel', 'hover')  // this does not clear the screen
     scoreOne = 0
     scoreTwo = 0
     scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
     scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
     let currentPlayer = allPlayers[0]
+    const myFirstTimer = setTimeout(() => {
+      winnerElement.style.display = 'none'
+    }, 2000)
+    console.log(myFirstTimer)
 
   }
 
