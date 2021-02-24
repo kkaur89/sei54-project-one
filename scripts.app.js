@@ -5,8 +5,10 @@ function init() {
   const ysl = document.querySelector('.P1YSL')
   const scoreOneDisplay = document.querySelector('#scoreOne')
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
-  // const winnerElement = document.querySelector('.winner')
-  // const endGame = document.querySelector('.finish')
+  const displayWinner = document.querySelector('.player-winner')
+  const winnerElement = document.querySelector('.Winner')
+  const endGame = document.querySelector('.finish')
+  let nextPlayer = document.querySelector('.whos-turn')
   // const restartGame = document.querySelector('.start-again')
 
   let scoreOne = 0
@@ -33,7 +35,7 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.textContent = i
+      //cell.textContent = i
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
@@ -44,9 +46,10 @@ function init() {
 
   // console.log(cells)
 
-  // function hideWinnerElement(event) {
-  //   event.target.classList.remove('winner')     // this is the winner element which I only want to appear when there has been a winner. This is not currently working
-  // }
+  function hideWinnerElement(event) {
+    // event.target.classList.remove('Winner')     // this is the winner element which I only want to appear when there has been a winner. This is not currently working
+    console.log('the event',event.target)
+  }
 
 
   // bug - this allows the user to click in a cell that has already been used and replace with their option
@@ -58,8 +61,10 @@ function init() {
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
 
+      // nextPlayer.innerText = 'Player One it is now your turn'
+
       let choice = Number(event.target.id) % width + 36
-      console.log('choice',choice)
+      // console.log('choice',choice)
 
       while (cells[choice].classList.contains('chanel') || (cells[choice].classList.contains('ysl'))) {
         choice = choice - width
@@ -134,10 +139,6 @@ function init() {
         
       }
   
-    
-
-      
-
 
       index = width + 1
       
@@ -220,7 +221,7 @@ function init() {
         } 
         
       }
-      // console.log('playerOne', playerOneChoice)
+      console.log('playerOne', playerOneChoice)
    
 
       // STARTS FROM THE BOTTOM AND IS GOING UP
@@ -229,7 +230,7 @@ function init() {
 
       index = 0 + width
 
-      while ((cells + choice) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel') && cells[choice + index] <= width) {
+      while ((choice + index) + width <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
 
         index = index + width 
@@ -247,6 +248,7 @@ function init() {
       playerOneChoice = []
  
       currentPlayer = allPlayers[1]
+      // nextPlayer.innerText = 'Player Two it is now your turn'
       
 
     } else {
@@ -387,9 +389,9 @@ function init() {
       // FOURTH CHOICE - UP AND DOWN
       playerTwoChoice.push(secondChoice)
 
-      index = 0 + width
+      index = 0 - width
 
-      while ((cells + secondChoice) >= width && cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) >= width && cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)
 
         index = index - width
@@ -409,7 +411,7 @@ function init() {
 
       index = 0 + width
 
-      while ((cells + secondChoice) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
+      while ((secondChoice + index) + width <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
         playerTwoChoice.push(secondChoice + index)
 
         index = index + width 
@@ -494,7 +496,7 @@ function init() {
   // grid.removeEventListener('click', startGame, false)
   // restartGame.addEventListener('click', playAgain)
 
-  // winnerElement.addEventListener('load', hideWinnerElement)
+  document.addEventListener('load', hideWinnerElement)
 
 
   createGrid()

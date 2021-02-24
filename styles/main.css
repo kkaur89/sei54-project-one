@@ -51,13 +51,13 @@ img.selfridges {
   position: relative;
 }
 .floor {
-  width: 1000px;
-  height: 150px;
-  background-image: url("../images/Screenshot\ 2021-02-20\ at\ 15.32.47.png");
+  width: 1500px;
+  height: 200px;
+  background-image: url("../images/Screenshot\ 2021-02-20\ at\ 15.32.47\ \(2\).png");
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: 150px;
+  bottom: 120px;
   z-index: -1;
 
 }
@@ -86,7 +86,7 @@ img.floor {
   text-align: center;
   justify-content: center;
   flex-grow: 0.5;
-  border: 1px solid lightgrey;
+  /*border: 1px solid lightgrey;*/
   height: 13.5%;
   width: 15%;
 }
@@ -140,20 +140,68 @@ img.P1YSL {
 }
 
 /* how do use z-index? */
-.winner {
-  position: absolute;
-  left: 0px;
-  top: 0px;
+
+.Winner {
+  display: none;
   z-index: -1;
 }
-/*
+
+
+/*.Winner {
+  text-align:center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  height: 600px;
+  border-radius: 10px;
+  background-color: rgb(2, 43, 2);
+  z-index: 1;
+  position: absolute;
+  top: 220px;
+}
+
+.player-winner {
+  color: white;
+  font-size: 30px;
+  position: relative;
+}
+
+.player-winner.pulse {
+  animation:pulse 3s infinite;
+}
+
+#start-again, #finish {
+  width: 150px;
+  height: 55px;
+  font-weight: bold;
+  flex-direction: row;
+  background-color: rgb(168, 163, 157);
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: rgb(145, 120, 87);
+}
+
+img.congrats {
+  width: 650px;
+  height: 300px;
+  z-index: -1;
+  align-content: center;
+  border-radius: 10px;
+  position: relative;
+  top: 20px;
+  left: 2px;
+}
+*/
+
 .grid div:hover {
   background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), url("../images/small-boy-chanel-handbag-blue-grained-.png");
   background-size: cover;
   background-position: bottom;
 
 }
-
+/*
 .grid div:hover {
   background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), url("../images/118-2000644-442906D420W1000_BLACKGOLD_M.png");
   background-size: cover;
@@ -161,6 +209,11 @@ img.P1YSL {
 
 }
 */
+
+.print-player {
+  position: absolute;
+  top: 900px;
+}
 
 .P1CHANEL.pulse {
   animation: pulse 3s infinite;
