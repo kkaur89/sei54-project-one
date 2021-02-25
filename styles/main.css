@@ -231,6 +231,16 @@ img.congrats {
   align-content: space-between;
 }
 
+.draw {
+  display: none;
+  width: 820px;
+  height: 800px;
+  background-image: url("../images/My\ Post\ copy-2.png");
+  background-size: cover;
+  position: absolute;
+  top: 190px;
+}
+
 
 .grid div:hover {
   background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), var(--bag);

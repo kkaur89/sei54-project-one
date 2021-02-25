@@ -123,7 +123,7 @@ function init() {
       index = choice - width + 1
       
 
-      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
+      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //
   
         index -= (width + 1)
       }
@@ -157,7 +157,7 @@ function init() {
 
       index = choice + width + 1
 
-      while (index % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
+      while ((index + 1) % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //
 
         index += width + 1
       }
