@@ -84,29 +84,28 @@ function init() {
       }
 
 
-      playerOneChoice = [choice]
-
       index = choice - 1
 
       while (index % width !== width - 1 && checkCurrentElementPlayerOne(index)) {
  
         index--
-
-        if (playerOneChoice.length >= 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse') //loop through the array cells[].classList.toogle('ysl')
-       
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'         
-          }, 2000)
-          console.log(myFirstTimer)
-         
-        }
-
       }
+
+      if (playerOneChoice.length >= 4) {
+        console.log('win')
+        scoreOne++
+        scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        chanel.classList.toggle('pulse') //loop through the array cells[].classList.toogle('ysl')
+       
+        const myFirstTimer = setTimeout(() => {
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'         
+        }, 2000)
+        console.log(myFirstTimer)
+         
+      }
+
+      
 
 
       playerOneChoice = [choice]
@@ -239,31 +238,29 @@ function init() {
         index++
       }
 
-      playerTwoChoice = [secondChoice]
 
       index = secondChoice - 1
 
       while (index % width !== width - 1 && checkCurrentElementPlayerTwo(index)) {
 
         index--
-        
-
-        if (playerTwoChoice.length >= 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse') // loop through the array cells[].classList.toogle('ysl')
-          
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-     
-          }, 2000)
-          console.log(myFirstTimer)
-      
-        }
-
       }
+      if (playerTwoChoice.length >= 4) {
+        console.log('Player 2 win')
+        scoreTwo++
+        scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+        ysl.classList.toggle('pulse') // loop through the array cells[].classList.toogle('ysl')
+          
+        const myFirstTimer = setTimeout(() => {
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+     
+        }, 2000)
+        console.log(myFirstTimer)
+      
+      }
+
+      
       playerTwoChoice = [secondChoice]
      
 
@@ -377,19 +374,23 @@ function init() {
 
 
   function playAgain(event) {
-    playerOneChoice[0]
-    playerTwoChoice[0]
+    event.target = playerOneChoice[0]
+    event.target = playerTwoChoice[0]
     currentPlayer = allPlayers[0]
+
+    ysl.classList.remove('pulse')
+    chanel.classList.remove('pulse')
+
+    grid.innerHTML = ''
+    createGrid()  
+
     const myFirstTimer = setTimeout(() => {
       winnerElement.style.display = 'none'
     }, 1000)
-    console.log(myFirstTimer)
-    ysl.classList.remove('pulse')
-    chanel.classList.remove('pulse')
-    cells[index].classList.remove('chanel', 'ysl')
-    grid.addEventListener('click', startGame)
-    // event.target.id.classList.remove('ysl', 'chanel') // how do i clear elements from the screen
+    
+    startGame()
   }
+
 
   function gameOver(event) {
     winnerElement.style.display = 'none'
