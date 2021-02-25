@@ -8,15 +8,15 @@ function init() {
   const displayWinner = document.querySelector('.player-winner')
   const winnerElement = document.querySelector('.Winner')
   const endGame = document.querySelector('#finish')
-  let nextPlayer = document.querySelector('.whos-turn')
-  let restartGame = document.querySelector('#start-again')
+  const restartGame = document.querySelector('#start-again')
   const finish = document.querySelector('.end-game')
   const finalScoreOne = document.querySelector('.player-one-final')
   const finalScoreTwo = document.querySelector('.player-two-final')
 
+
   let scoreOne = 0
   let scoreTwo = 0
-  // let connectTimer
+
 
   const width = 6
   const height = 7
@@ -38,7 +38,7 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.textContent = i
+      // cell.textContent = i
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
@@ -100,8 +100,7 @@ function init() {
        
           const myFirstTimer = setTimeout(() => {
             displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
+            winnerElement.style.display = 'flex'         
           }, 2000)
           console.log(myFirstTimer)
          
@@ -118,36 +117,32 @@ function init() {
 
       while ((index + 1) % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
       
-
         index += (width - 1)
 
       }
-
 
       index = choice - width + 1
       
 
       while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
   
-
         index -= (width + 1)
-
-        if (playerOneChoice.length >= 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
-        
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-
-        } 
-        
       }
+      if (playerOneChoice.length >= 4) {
+        console.log('win')
+        scoreOne++
+        scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        chanel.classList.toggle('pulse')
+        
+        const myFirstTimer = setTimeout(() => {
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'        
+        }, 2000)
+        console.log(myFirstTimer)
+
+      } 
+        
+      
  
       playerOneChoice = [choice]
 
@@ -166,60 +161,28 @@ function init() {
       while (index % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
 
         index += width + 1
-
-        if (playerOneChoice.length >= 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-        } 
-        
       }
+
+      if (playerOneChoice.length >= 4) {
+        console.log('win')
+        scoreOne++
+        scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+        chanel.classList.toggle('pulse')
+
+        const myFirstTimer = setTimeout(() => {
+          displayWinner.innerText = 'Player One, you win!'
+          winnerElement.style.display = 'flex'     
+        }, 2000)
+        console.log(myFirstTimer)
+      } 
+        
+      
      
       playerOneChoice = [choice]
 
-      // FOURTH LOOP - UP AND DOWN
+  
 
-   
-
-      // index = 0 - width
-
-      // while ((choice + index) >= width && checkCurrentElementPlayerOne(index)) {
-      //   playerOneChoice.push(choice + index)
-      //   console.log(choice + index)
-
-      //   index = index - width
-
-      //   if (playerOneChoice.length === 4) {
-      //     console.log('win')
-      //     scoreOne++
-      //     scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-      //     chanel.classList.toggle('pulse')
-
-      //     const myFirstTimer = setTimeout(() => {
-      //       displayWinner.innerText = 'Player One, you win!'
-      //       winnerElement.style.display = 'flex'
-      //       grid.removeEventListener('click', startGame, false)            
-      //     }, 2000)
-      //     console.log(myFirstTimer)
-   
-      //   } 
-        
-      // }
-      // console.log('playerOne', playerOneChoice)
-   
-      
-
-      // STARTS FROM THE BOTTOM AND IS GOING UP
-
- 
+      // 4TH OPTION BOTTOM UP
 
       index = choice + width
 
@@ -237,8 +200,7 @@ function init() {
 
           const myFirstTimer = setTimeout(() => {
             displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
+            winnerElement.style.display = 'flex'        
           }, 2000)
           console.log(myFirstTimer)
          
@@ -295,7 +257,7 @@ function init() {
           const myFirstTimer = setTimeout(() => {
             displayWinner.innerText = 'Player Two, you win!'
             winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
+     
           }, 2000)
           console.log(myFirstTimer)
       
@@ -331,7 +293,6 @@ function init() {
           const myFirstTimer = setTimeout(() => {
             displayWinner.innerText = 'Player Two, you win!'
             winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
           }, 2000)
           console.log(myFirstTimer)
           
@@ -358,54 +319,27 @@ function init() {
       while (index % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerTwo(index)) {
 
         index +=  width + 1
-
-        if (playerTwoChoice.length >= 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-          
-        } 
-        
       }
+
+      if (playerTwoChoice.length >= 4) {
+        console.log('Player 2 win')
+        scoreTwo++
+        scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+        ysl.classList.toggle('pulse')
+
+        const myFirstTimer = setTimeout(() => {
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'
+        }, 2000)
+        console.log(myFirstTimer)
+          
+      } 
+        
+      
     
       playerTwoChoice = [secondChoice]
 
       // FOURTH CHOICE - UP AND DOWN
-      // playerTwoChoice.push(secondChoice)
-     
-
-      // index = 0 - width
-
-      // while ((secondChoice + index) >= width && cells[secondChoice + index].classList.contains('ysl')) {
-      //   playerTwoChoice.push(secondChoice + index)
-
-      //   index = index - width
-
-      //   if (playerTwoChoice.length === 4) {
-      //     console.log('Player 2 win')
-      //     scoreTwo++
-      //     scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-      //     ysl.classList.toggle('pulse')
-          
-      //     const myFirstTimer = setTimeout(() => {
-      //       displayWinner.innerText = 'Player Two, you win!'
-      //       winnerElement.style.display = 'flex'
-      //       grid.removeEventListener('click', startGame, false)            
-      //     }, 2000)
-      //     console.log(myFirstTimer)
-          
-      //   } 
-        
-      // }
-      // console.log('playerTwo', playerTwoChoice)
 
 
       index = secondChoice + width
@@ -413,24 +347,24 @@ function init() {
       while (index <= width * height - 1 && checkCurrentElementPlayerTwo(index)) {
 
         index = index + width 
-
-        if (playerTwoChoice.length >= 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
-          
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-          
-        } 
-        
       }
+
+      if (playerTwoChoice.length >= 4) {
+        console.log('Player 2 win')
+        scoreTwo++
+        scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+        ysl.classList.toggle('pulse')
+          
+
+        const myFirstTimer = setTimeout(() => {
+          displayWinner.innerText = 'Player Two, you win!'
+          winnerElement.style.display = 'flex'           
+        }, 2000)
+        console.log(myFirstTimer)
+          
+      } 
+        
+      
       console.log('playerTwo', playerTwoChoice)
 
       playerTwoChoice = []
@@ -441,11 +375,6 @@ function init() {
     } 
   } 
 
-  
-
-
-
-  
 
   function playAgain(event) {
     playerOneChoice[0]
@@ -455,6 +384,10 @@ function init() {
       winnerElement.style.display = 'none'
     }, 1000)
     console.log(myFirstTimer)
+    ysl.classList.remove('pulse')
+    chanel.classList.remove('pulse')
+    cells[index].classList.remove('chanel', 'ysl')
+    grid.addEventListener('click', startGame)
     // event.target.id.classList.remove('ysl', 'chanel') // how do i clear elements from the screen
   }
 
