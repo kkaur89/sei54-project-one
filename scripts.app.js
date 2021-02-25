@@ -45,12 +45,25 @@ function init() {
     }
   }
 
+  function checkCurrentElementPlayerOne(index) {
 
+    if (cells[index].classList.contains('chanel')) {
+      playerOneChoice.push(index)
+      return true
+    } return false
+  }
+
+  function checkCurrentElementPlayerTwo(index) {
+
+    if (cells[index].classList.contains('ysl')) {
+      playerTwoChoice.push(index)
+      return true
+    } return false
+  }
 
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
 
-      // nextPlayer.innerText = 'Player One it is now your turn'
 
       let choice = Number(event.target.id) % width + 36
 
@@ -59,44 +72,27 @@ function init() {
       }
       
       cells[choice].classList.add('chanel', 'fall')  
-      playerOneChoice.push(choice)
+      playerOneChoice = [choice]
 
-      let index = 1
+      let index =  choice + 1
 
       // FIRST LOOP - LEFT AND RIGHT
 
-      while ((choice + index) % width !== 0 && cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)  
-
+      while (index % width !== 0 && checkCurrentElementPlayerOne(index)) {
         index++
-
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse') //loop through the array cells[].classList.toogle('ysl')
-          
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-
-        }
           
       }
 
 
-      index = 1
+      playerOneChoice = [choice]
 
-      while ((choice - index) % width !== width - 1 && cells[choice - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice - index)
+      index = choice - 1
 
-        index++
-        
+      while (index % width !== width - 1 && checkCurrentElementPlayerOne(index)) {
+ 
+        index--
 
-        if (playerOneChoice.length === 4) {
+        if (playerOneChoice.length >= 4) {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
@@ -114,51 +110,29 @@ function init() {
       }
 
 
-      playerOneChoice = []
+      playerOneChoice = [choice]
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
 
-      playerOneChoice.push(choice)
+      index = choice + width - 1
 
-      index = width - 1
-
-      while ((choice + index) % width !== 0 && (choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
-       
-        playerOneChoice.push(choice + index)
+      while ((index + 1) % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
       
 
-        index = index + width - 1
+        index += (width - 1)
 
-       
-
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-
-        } 
-        
       }
+
+
+      index = choice - width + 1
+      
+
+      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
   
- 
 
-      index = width + 1
-      
+        index -= (width + 1)
 
-      while ((choice + index) % width !== width - 1 && (choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
-
-        index = index + width + 1
-
-        if (playerOneChoice.length === 4) {
+        if (playerOneChoice.length >= 4) {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
@@ -175,50 +149,25 @@ function init() {
         
       }
  
-      playerOneChoice = []
+      playerOneChoice = [choice]
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-      playerOneChoice.push(choice)
-
-      index = width - 1
+      index = choice - width - 1
       
+      while ((index + 1) % width !== 0 && index >= width && checkCurrentElementPlayerOne(index)) {
 
-      while ((choice - index) % width !== 0 && (choice - index) >= width && cells[choice - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice - index)
+        index -= width - 1
 
-        index = index + width - 1
-
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-  
-        } 
-        
       }
-    
-  
-  
 
+      index = choice + width + 1
 
+      while (index % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
 
-      index = width + 1
+        index += width + 1
 
-      while ((choice - index) % width !== 0 && (choice - index) <= width * height - 1 && cells[choice - index].classList.contains('chanel')) {
-        playerOneChoice.push(choice - index)
-
-        index = index + width + 1
-
-        if (playerOneChoice.length === 4) {
+        if (playerOneChoice.length >= 4) {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
@@ -234,37 +183,37 @@ function init() {
         
       }
      
-      playerOneChoice = []
+      playerOneChoice = [choice]
 
       // FOURTH LOOP - UP AND DOWN
 
-      playerOneChoice.push(choice)
-
-      index = 0 - width
-
-      while ((choice + index) >= width && cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
-        console.log(choice + index)
-
-        index = index - width
-
-        if (playerOneChoice.length === 4) {
-          console.log('win')
-          scoreOne++
-          scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player One, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
    
-        } 
+
+      // index = 0 - width
+
+      // while ((choice + index) >= width && checkCurrentElementPlayerOne(index)) {
+      //   playerOneChoice.push(choice + index)
+      //   console.log(choice + index)
+
+      //   index = index - width
+
+      //   if (playerOneChoice.length === 4) {
+      //     console.log('win')
+      //     scoreOne++
+      //     scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
+      //     chanel.classList.toggle('pulse')
+
+      //     const myFirstTimer = setTimeout(() => {
+      //       displayWinner.innerText = 'Player One, you win!'
+      //       winnerElement.style.display = 'flex'
+      //       grid.removeEventListener('click', startGame, false)            
+      //     }, 2000)
+      //     console.log(myFirstTimer)
+   
+      //   } 
         
-      }
-      console.log('playerOne', playerOneChoice)
+      // }
+      // console.log('playerOne', playerOneChoice)
    
       
 
@@ -272,16 +221,15 @@ function init() {
 
  
 
-      index = 0 + width
+      index = choice + width
 
-      while ((choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
-        playerOneChoice.push(choice + index)
+      while (index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
 
-        console.log('choice', choice + index)
+        // console.log('choice', choice + index)
 
         index = index + width 
 
-        if (playerOneChoice.length === 4) {
+        if (playerOneChoice.length >= 4) {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
@@ -297,16 +245,17 @@ function init() {
         } 
         
       }
- 
-      console.log('playerOne', playerOneChoice)
-
+      document.documentElement.style.setProperty('--bag', ('url("../images/118-2000644-442906D420W1000_BLACKGOLD_M.png")'))
       playerOneChoice = []
- 
       currentPlayer = allPlayers[1]
-      // nextPlayer.innerText = 'Player Two it is now your turn'
-      
 
-    } else {
+   
+
+    } else { 
+
+      // PLAYER TWO, 
+      // PLAYER TWO,
+      // PLAYER TWO
 
 
       let secondChoice = Number(event.target.id) % width + 36
@@ -317,43 +266,27 @@ function init() {
       
       cells[secondChoice].classList.add('ysl', 'fall')  
 
-      playerTwoChoice.push(secondChoice)
+      playerTwoChoice = [secondChoice]
 
-      let index = 1
+      let index =  secondChoice + 1
 
       // FIRST WHILE LOOP = LEFT AND RIGHT
 
-      while ((secondChoice + index) % width !== 0 && cells[secondChoice + index].classList.contains('ysl')) {
-        playerTwoChoice.push(secondChoice + index)  
- 
+      while (index % width !== 0 && checkCurrentElementPlayerTwo(index)) {
 
         index++
-
-        if (playerTwoChoice.length === 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-
-        }  
       }
 
-      index = 1
+      playerTwoChoice = [secondChoice]
 
-      while ((secondChoice - index) % width !== width - 1 && cells[secondChoice - index].classList.contains('ysl')) {
-        playerTwoChoice.push(secondChoice - index)
+      index = secondChoice - 1
 
-        index++
+      while (index % width !== width - 1 && checkCurrentElementPlayerTwo(index)) {
+
+        index--
         
 
-        if (playerTwoChoice.length === 4) {
+        if (playerTwoChoice.length >= 4) {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
@@ -369,48 +302,27 @@ function init() {
         }
 
       }
-      playerTwoChoice = []
+      playerTwoChoice = [secondChoice]
      
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
-      playerTwoChoice.push(secondChoice)
 
-      index = width - 1
+      index = secondChoice + width - 1
 
-      while ((secondChoice + index) % width !== 0 && (secondChoice + index) <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
-       
-        playerTwoChoice.push(secondChoice + index)
+      while ((index + 1) % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerTwo(index)) {
 
-        index = index + width - 1
-
-       
-
-        if (playerTwoChoice.length === 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-          
-        } 
+        index += (width - 1)
         
       }
       
-
-      index = width + 1
+      index = secondChoice - width + 1
       
 
-      while ((secondChoice + index) % width !== width - 1 && (secondChoice + index) <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
-        playerOneChoice.push(secondChoice + index)
-        index = index + width + 1
+      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerTwo(index)) {
 
-        if (playerTwoChoice.length === 4) {
+        index -= (width + 1)
+
+        if (playerTwoChoice.length >= 4) {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
@@ -427,49 +339,27 @@ function init() {
         
       }
 
-      playerTwoChoice = []
+      playerTwoChoice = [secondChoice]
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-      playerTwoChoice.push(secondChoice)
-
-      index = width - 1
+      index = secondChoice - width - 1
       
 
-      while ((secondChoice - index) % width !== 0 && (secondChoice - index) >= width && cells[secondChoice - index].classList.contains('ysl')) {
-        playerOneChoice.push(secondChoice - index)
+      while ((index + 1) % width !== 0 && index >= width && checkCurrentElementPlayerTwo(index)) {
 
-        index = index + width - 1
-
-        if (playerTwoChoice.length === 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
-
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
-          
-        } 
+        index -= width - 1
         
       }
-
-    
 
   
+      index = secondChoice + width + 1
 
-      index = width + 1
+      while (index % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerTwo(index)) {
 
-      while ((secondChoice - index) % width !== 0 && (secondChoice - index) <= width * height - 1 && cells[secondChoice - index].classList.contains('ysl')) {
-        playerTwoChoice.push(secondChoice - index)
+        index +=  width + 1
 
-        index = index + width + 1
-
-        if (playerTwoChoice.length === 4) {
+        if (playerTwoChoice.length >= 4) {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
@@ -486,48 +376,45 @@ function init() {
         
       }
     
- 
+      playerTwoChoice = [secondChoice]
 
       // FOURTH CHOICE - UP AND DOWN
-      playerTwoChoice.push(secondChoice)
+      // playerTwoChoice.push(secondChoice)
      
 
-      index = 0 - width
+      // index = 0 - width
 
-      while ((secondChoice + index) >= width && cells[secondChoice + index].classList.contains('ysl')) {
-        playerTwoChoice.push(secondChoice + index)
+      // while ((secondChoice + index) >= width && cells[secondChoice + index].classList.contains('ysl')) {
+      //   playerTwoChoice.push(secondChoice + index)
 
-        index = index - width
+      //   index = index - width
 
-        if (playerTwoChoice.length === 4) {
-          console.log('Player 2 win')
-          scoreTwo++
-          scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-          ysl.classList.toggle('pulse')
+      //   if (playerTwoChoice.length === 4) {
+      //     console.log('Player 2 win')
+      //     scoreTwo++
+      //     scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
+      //     ysl.classList.toggle('pulse')
           
-          const myFirstTimer = setTimeout(() => {
-            displayWinner.innerText = 'Player Two, you win!'
-            winnerElement.style.display = 'flex'
-            grid.removeEventListener('click', startGame, false)            
-          }, 2000)
-          console.log(myFirstTimer)
+      //     const myFirstTimer = setTimeout(() => {
+      //       displayWinner.innerText = 'Player Two, you win!'
+      //       winnerElement.style.display = 'flex'
+      //       grid.removeEventListener('click', startGame, false)            
+      //     }, 2000)
+      //     console.log(myFirstTimer)
           
-        } 
+      //   } 
         
-      }
+      // }
       // console.log('playerTwo', playerTwoChoice)
 
 
- 
+      index = secondChoice + width
 
-      index = 0 + width
-
-      while ((secondChoice + index) <= width * height - 1 && cells[secondChoice + index].classList.contains('ysl')) {
-        playerTwoChoice.push(secondChoice + index)
+      while (index <= width * height - 1 && checkCurrentElementPlayerTwo(index)) {
 
         index = index + width 
 
-        if (playerTwoChoice.length === 4) {
+        if (playerTwoChoice.length >= 4) {
           console.log('Player 2 win')
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
@@ -547,11 +434,16 @@ function init() {
       console.log('playerTwo', playerTwoChoice)
 
       playerTwoChoice = []
-      
-      currentPlayer = allPlayers[0]
-    }  
 
-  }
+      currentPlayer = allPlayers[0]
+      
+      document.documentElement.style.setProperty('--bag', ('url("../images/small-boy-chanel-handbag-blue-grained-.png")'))
+    } 
+  } 
+
+  
+
+
 
   
 

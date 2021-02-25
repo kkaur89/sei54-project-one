@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bag: url("../images/small-boy-chanel-handbag-blue-grained-.png");
+}
+
 body {
   background-image: url("../images/130.jpg");
   background-size: cover;
@@ -229,7 +233,7 @@ img.congrats {
 
 
 .grid div:hover {
-  background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), url("../images/small-boy-chanel-handbag-blue-grained-.png");
+  background-image: radial-gradient( rgba(245, 246, 252, 0.52), rgba(245, 246, 252, 0.52)), var(--bag);
   background-size: cover;
   background-position: bottom;
 
