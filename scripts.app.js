@@ -10,6 +10,9 @@ function init() {
   const endGame = document.querySelector('#finish')
   let nextPlayer = document.querySelector('.whos-turn')
   let restartGame = document.querySelector('#start-again')
+  const finish = document.querySelector('.end-game')
+  const finalScoreOne = document.querySelector('.player-one-final')
+  const finalScoreTwo = document.querySelector('.player-two-final')
 
   let scoreOne = 0
   let scoreTwo = 0
@@ -44,20 +47,12 @@ function init() {
 
 
 
-
-  // bug - this allows the user to click in a cell that has already been used and replace with their option
-
-  // move the winning options into a seperate function and then call it in this function
-  // add another if statment to ensure the user can only pick from empty cells starting at the bottom
-  //  if 0 + width * 7
-
   function startGame(event) {
     if (currentPlayer === allPlayers[0]) {
 
       // nextPlayer.innerText = 'Player One it is now your turn'
 
       let choice = Number(event.target.id) % width + 36
-      // console.log('choice',choice)
 
       while (cells[choice].classList.contains('chanel') || (cells[choice].classList.contains('ysl'))) {
         choice = choice - width
@@ -67,6 +62,8 @@ function init() {
       playerOneChoice.push(choice)
 
       let index = 1
+
+      // FIRST LOOP - LEFT AND RIGHT
 
       while ((choice + index) % width !== 0 && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)  
@@ -111,17 +108,18 @@ function init() {
       }
 
 
-
+      playerOneChoice = []
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
 
-   
+      playerOneChoice.push(choice)
 
       index = width - 1
 
       while ((choice + index) % width !== 0 && (choice + index) <= width * height - 1 && cells[choice + index].classList.contains('chanel')) {
        
         playerOneChoice.push(choice + index)
+      
 
         index = index + width - 1
 
@@ -163,11 +161,11 @@ function init() {
         
       }
  
-
+      playerOneChoice = []
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-     
+      playerOneChoice.push(choice)
 
       index = width - 1
       
@@ -215,16 +213,17 @@ function init() {
         
       }
      
-   
+      playerOneChoice = []
 
       // FOURTH LOOP - UP AND DOWN
 
-     
+      playerOneChoice.push(choice)
 
       index = 0 - width
 
       while ((choice + index) >= width && cells[choice + index].classList.contains('chanel')) {
         playerOneChoice.push(choice + index)
+        console.log(choice + index)
 
         index = index - width
 
@@ -267,7 +266,7 @@ function init() {
             displayWinner.innerText = 'Player One, you win!'
             winnerElement.style.display = 'flex'
             grid.removeEventListener('click', startGame, false)            
-          }, 3000)
+          }, 2000)
           console.log(myFirstTimer)
          
         } 
@@ -342,6 +341,7 @@ function init() {
      
 
       // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
+      playerTwoChoice.push(secondChoice)
 
       index = width - 1
 
@@ -391,7 +391,7 @@ function init() {
 
       // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
 
-
+      playerTwoChoice.push(secondChoice)
 
       index = width - 1
       
@@ -441,7 +441,8 @@ function init() {
  
 
       // FOURTH CHOICE - UP AND DOWN
-
+      playerTwoChoice.push(secondChoice)
+     
 
       index = 0 - width
 
@@ -495,32 +496,34 @@ function init() {
 
   }
 
-
-
-  // function gameOver(event) {
-
-  // }
+  
 
   function playAgain(event) {
-   
-    grid.classList.remove('ysl', 'chanel', 'hover')  // this does not clear the screen
-    scoreOne = 0
-    scoreTwo = 0
-    scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-    scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
-    let currentPlayer = allPlayers[0]
+    playerOneChoice[0]
+    playerTwoChoice[0]
+    currentPlayer = allPlayers[0]
     const myFirstTimer = setTimeout(() => {
       winnerElement.style.display = 'none'
-    }, 2000)
+    }, 1000)
     console.log(myFirstTimer)
+    // event.target.id.classList.remove('ysl', 'chanel') // how do i clear elements from the screen
+  }
+
+  function gameOver(event) {
+    winnerElement.style.display = 'none'
+    finish.style.display = 'flex'
+    finalScoreOne.innerText = `PLAYER ONE FINAL SCORE: ${scoreOne}`
+    finalScoreTwo.innerText = `PLAYER TWO FINAL SCORE: ${scoreTwo}`
 
   }
+
+
 
   
 
   grid.addEventListener('click', startGame)
   restartGame.addEventListener('click', playAgain)
-  // document.addEventListener('click', winningChoices) 
+  endGame.addEventListener('click', gameOver)
   // grid.removeEventListener('click', startGame, false)  THIS WORKS, disables the buttons
  
 
