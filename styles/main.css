@@ -57,7 +57,7 @@ img.selfridges {
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: 120px;
+  bottom: 100px;
   z-index: -1;
 
 }
@@ -275,4 +275,77 @@ img.congrats {
   to {
     transform: translateY(0);
   }
+}
+
+
+@media screen and (max-width:800px),
+screen and (max-height: 1100px) {
+  .body {
+    max-height: 100%;
+  }
+
+  .section-one {
+    display: block;
+    align-content: center;
+  }
+
+  .floor{
+    position: absolute;
+    bottom: -100px;
+    width: 120%;
+  }
+.grid-floor {
+  position: relative;
+  left: 50px;
+}
+
+  .player-one {
+    font-size: large;
+    text-align: center;
+    position: absolute;
+    bottom: -120px;
+    right: 400px;
+    
+  }
+  
+  .player-two {
+    font-size: large;
+    text-align: center;
+    position: absolute;
+    bottom: -140px;
+    left: 500px;
+   
+  }
+
+  .Winner {
+    display: none; 
+    width: 700px;
+    height: 600px;
+    left: 100px;
+
+} 
+
+img.congrats {
+  width: 650px;
+  height: 350px;
+  z-index: -1;
+  align-content: center;
+  border-radius: 10px;
+  position: relative;
+  top: 20px;
+  left: 5px;
+}
+
+#start-again, #finish {
+  width: 150px;
+  height: 50px;
+  font-family: 'Akaya Telivigala', cursive;
+  color:rgb(69, 69, 70);
+  font-size: 15px;
+  font-weight: bold;
+  flex-direction: row;
+  background-color: rgb(185, 159, 181);
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: rgb(145, 120, 87);
 }
