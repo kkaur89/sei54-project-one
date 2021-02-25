@@ -74,10 +74,14 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+          chanel.classList.toggle('pulse') //loop through the array cells[].classList.toogle('ysl')
+          
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
 
         }
           
@@ -96,12 +100,14 @@ function init() {
           console.log('win')
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
-          chanel.classList.toggle('pulse')
+          chanel.classList.toggle('pulse') //loop through the array cells[].classList.toogle('ysl')
        
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
-
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
          
         }
 
@@ -130,9 +136,13 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
 
         } 
         
@@ -153,10 +163,14 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
-          playAgain()
+        
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
+
         } 
         
       }
@@ -180,9 +194,13 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
   
         } 
         
@@ -205,10 +223,13 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
 
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
         } 
         
       }
@@ -232,9 +253,13 @@ function init() {
           scoreOne++
           scoreOneDisplay.innerText = `SCORE: ${scoreOne}`
           chanel.classList.toggle('pulse')
-          displayWinner.innerText = 'Player One, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player One, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
    
         } 
         
@@ -309,10 +334,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
-    
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
 
         }  
       }
@@ -330,9 +358,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse') // loop through the array cells[].classList.toogle('ysl')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+          
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
       
         }
 
@@ -358,9 +390,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
           
         } 
         
@@ -379,9 +415,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
           
         } 
         
@@ -406,9 +446,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
           
         } 
         
@@ -430,9 +474,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
           
         } 
         
@@ -456,9 +504,13 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+          
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
           
         } 
         
@@ -480,9 +532,14 @@ function init() {
           scoreTwo++
           scoreTwoDisplay.innerText = `SCORE: ${scoreTwo}`
           ysl.classList.toggle('pulse')
-          displayWinner.innerText = 'Player Two, you win!'
-          winnerElement.style.display = 'flex'
-          grid.removeEventListener('click', startGame, false)
+          
+
+          const myFirstTimer = setTimeout(() => {
+            displayWinner.innerText = 'Player Two, you win!'
+            winnerElement.style.display = 'flex'
+            grid.removeEventListener('click', startGame, false)            
+          }, 2000)
+          console.log(myFirstTimer)
           
         } 
         
