@@ -183,6 +183,14 @@ function init() {
 
       // 4TH OPTION BOTTOM UP
 
+      index = choice - width
+
+      while (index >= width && checkCurrentElementPlayerOne(index)) {
+
+
+        index = choice - width
+      }
+
       index = choice + width
 
       while (index <= width * height - 1 && checkCurrentElementPlayerOne(index)) {
@@ -212,10 +220,12 @@ function init() {
 
    
 
+    // } else if (cells.every(cells[index]).classlist.contains('ysl','chanel')) {
+    //   return window.alert('Its a draw')
     } else { 
 
       // PLAYER TWO, 
-      // PLAYER TWO,
+      // PLAYER TWO, 
       // PLAYER TWO
 
 
@@ -337,6 +347,14 @@ function init() {
       playerTwoChoice = [secondChoice]
 
       // FOURTH CHOICE - UP AND DOWN
+
+      index = secondChoice - width
+
+      while (index >= width && checkCurrentElementPlayerTwo(index)) {
+
+
+        index = secondChoice - width
+      }
 
 
       index = secondChoice + width
