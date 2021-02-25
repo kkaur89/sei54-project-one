@@ -374,8 +374,8 @@ function init() {
 
 
   function playAgain(event) {
-    event.target = playerOneChoice[0]
-    event.target = playerTwoChoice[0]
+    playerOneChoice = [0]
+    playerTwoChoice = [0]
     currentPlayer = allPlayers[0]
 
     ysl.classList.remove('pulse')
@@ -387,7 +387,9 @@ function init() {
     const myFirstTimer = setTimeout(() => {
       winnerElement.style.display = 'none'
     }, 1000)
-    
+
+    checkCurrentElementPlayerOne(index)
+    checkCurrentElementPlayerTwo(index)
     startGame()
   }
 
