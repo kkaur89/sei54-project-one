@@ -124,9 +124,10 @@ function init() {
       index = choice - width + 1
       
 
-      while ((index + 5) % width !== width - 1 &&  index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //added the first condition
-        console.log(index)
+      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index) || (index + 5) % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //added the first condition
+       
         index -= (width + 1)
+        console.log('index', index)
       }
       if (playerOneChoice.length >= 4) {
         console.log('win')
@@ -377,12 +378,10 @@ function init() {
           displayWinner.innerText = 'Player Two, you win!'
           winnerElement.style.display = 'flex'           
         }, 2000)
-        console.log(myFirstTimer)
           
       } 
         
       
-      console.log('playerTwo', playerTwoChoice)
 
       playerTwoChoice = []
 
@@ -409,14 +408,17 @@ function init() {
       drawDisplay.style.display = 'none'
     }, 1000)
 
-    checkCurrentElementPlayerOne(index)
-    checkCurrentElementPlayerTwo(index)
+    checkCurrentElementPlayerOne()
+    checkCurrentElementPlayerTwo()
     startGame()
+
+    console.log('event', event.target)
   }
 
 
   function gameOver(event) {
     winnerElement.style.display = 'none'
+    drawDisplay.style.display = 'none'
     finish.style.display = 'flex'
     finalScoreOne.innerText = `PLAYER ONE FINAL SCORE: ${scoreOne}`
     finalScoreTwo.innerText = `PLAYER TWO FINAL SCORE: ${scoreTwo}`

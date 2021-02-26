@@ -9,7 +9,6 @@
 body {
   background-image: url("../images/130.jpg");
   background-size: cover;
- /*background-repeat: no-repeat;*/
   font-family: 'Libre Franklin', sans-serif;
   display:flex;
   flex-wrap: wrap;
@@ -73,24 +72,10 @@ img.selfridges {
 
 
 
-
-
-/* tryig to overlap both images */
-
-/*img.grid {
-  position: absolute;
-  bottom: 20px;
-}
-
-img.floor {
-  position: relative;
-} */
-
 .grid div {
   text-align: center;
   justify-content: center;
   flex-grow: 0.5;
-  /*border: 1px solid lightgrey;*/
   height: 13.5%;
   width: 15%;
 }
@@ -147,16 +132,6 @@ img.P1YSL {
   height: 150px;
   text-align: right;
 }
-
-/* 
-
-.Winner {
-  display: none;
-  z-index: 1;
-}
-*/
-/*popup.styles.display = flex  --- use this in JS*/ 
-
 
 .Winner {
   display: none; 
