@@ -7,11 +7,12 @@ function init() {
   const scoreTwoDisplay = document.querySelector('#scoreTwo')
   const displayWinner = document.querySelector('.player-winner')
   const winnerElement = document.querySelector('.Winner')
-  const endGame = document.querySelector('#finish')
-  const restartGame = document.querySelector('#start-again')
+  const endGame = document.querySelector('#finish', '#finish-two')
+  const restartGame = document.querySelector('#start-again', '#start-again-one')
   const finish = document.querySelector('.end-game')
   const finalScoreOne = document.querySelector('.player-one-final')
   const finalScoreTwo = document.querySelector('.player-two-final')
+  const drawDisplay = document.querySelector('.draw')
 
 
   let scoreOne = 0
@@ -38,7 +39,7 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      // cell.textContent = i
+      cell.textContent = i
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
@@ -86,7 +87,7 @@ function init() {
 
       index = choice - 1
 
-      while (index % width !== width - 1 && checkCurrentElementPlayerOne(index)) {
+      while ((index + 1) % width !== width - 1 && index % width !== width - 1 && checkCurrentElementPlayerOne(index)) {    // added the first the condition
  
         index--
       }
@@ -110,7 +111,7 @@ function init() {
 
       playerOneChoice = [choice]
 
-      // SECOND LOOP - DIAGONAL UP LEFT AND RIGHT
+      // SECOND LOOP - DIAGONAL BOTTOM LEFT TO TOP RIGHT
 
       index = choice + width - 1
 
@@ -123,8 +124,8 @@ function init() {
       index = choice - width + 1
       
 
-      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //
-  
+      while ((index + 5) % width !== width - 1 &&  index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //added the first condition
+        console.log(index)
         index -= (width + 1)
       }
       if (playerOneChoice.length >= 4) {
@@ -145,7 +146,7 @@ function init() {
  
       playerOneChoice = [choice]
 
-      // 3RD LOOP - DIAGONAL TOP LEFT AND RIGHT
+      // 3RD LOOP - DIAGONAL TOP LEFT TO BOTTOM RIGHT
 
       index = choice - width - 1
       
@@ -157,7 +158,7 @@ function init() {
 
       index = choice + width + 1
 
-      while ((index + 1) % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //
+      while (index % width !== 0 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //
 
         index += width + 1
       }
@@ -220,8 +221,9 @@ function init() {
 
    
 
-    // } else if (cells.every(cells[index]).classlist.contains('ysl','chanel')) {
-    //   return window.alert('Its a draw')
+      // } else if (cells.every(cells[index]).classlist.contains('ysl','chanel')) {
+      //   drawDisplay.style.display = 'flex'
+
     } else { 
 
       // PLAYER TWO, 
@@ -404,6 +406,7 @@ function init() {
 
     const myFirstTimer = setTimeout(() => {
       winnerElement.style.display = 'none'
+      drawDisplay.style.display = 'none'
     }, 1000)
 
     checkCurrentElementPlayerOne(index)
