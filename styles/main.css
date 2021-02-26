@@ -36,6 +36,7 @@ img.selfridges {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
 }
 
 .grid {
@@ -52,6 +53,8 @@ img.selfridges {
   height: 650px;
   width: 800px;
   position: relative;
+  z-index: 1;
+
 }
 .floor {
   width: 1500px;
