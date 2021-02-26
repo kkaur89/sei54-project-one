@@ -13,6 +13,7 @@ function init() {
   const finalScoreOne = document.querySelector('.player-one-final')
   const finalScoreTwo = document.querySelector('.player-two-final')
   const drawDisplay = document.querySelector('.draw')
+  // const slideOne = document.querySelector('.slidecontainerone')
 
 
   let scoreOne = 0
@@ -39,12 +40,13 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.textContent = i
+      // cell.textContent = i
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
     }
   }
+
 
   function checkCurrentElementPlayerOne(index) {
 
@@ -124,11 +126,17 @@ function init() {
       index = choice - width + 1
       
 
-      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index) || (index + 5) % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { //added the first condition
+      while (index % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index)) { 
+        // || (index + 5) % width !== width - 1 && index <= width * height - 1 && checkCurrentElementPlayerOne(index))  //added the first condition
        
         index -= (width + 1)
-        console.log('index', index)
       }
+      console.log('index', index)
+
+      while (choice > 5 && checkCurrentElementPlayerOne(index)) {
+        playerOneChoice = [choice]
+      }
+
       if (playerOneChoice.length >= 4) {
         console.log('win')
         scoreOne++
@@ -222,8 +230,8 @@ function init() {
 
    
 
-      // } else if (cells.every(cells[index]).classlist.contains('ysl','chanel')) {
-      //   drawDisplay.style.display = 'flex'
+      // } else if (cells.classlist.contains('ysl') || (cells.classlist.contains('chanel'))) {
+      //   return drawDisplay.style.display = 'flex'
 
     } else { 
 
@@ -393,26 +401,7 @@ function init() {
 
 
   function playAgain(event) {
-    playerOneChoice = [0]
-    playerTwoChoice = [0]
-    currentPlayer = allPlayers[0]
-
-    ysl.classList.remove('pulse')
-    chanel.classList.remove('pulse')
-
-    grid.innerHTML = ''
-    createGrid()  
-
-    const myFirstTimer = setTimeout(() => {
-      winnerElement.style.display = 'none'
-      drawDisplay.style.display = 'none'
-    }, 1000)
-
-    checkCurrentElementPlayerOne()
-    checkCurrentElementPlayerTwo()
-    startGame()
-
-    console.log('event', event.target)
+    location.reload()
   }
 
 
@@ -425,6 +414,10 @@ function init() {
 
   }
 
+  // function handleMouseEnter(event) {
+  //   event.target.src = ('url("images/753bb12f3f625471ff8948f4b92854ed.png")')
+  // }
+
 
 
   
@@ -434,10 +427,37 @@ function init() {
   endGame.addEventListener('click', gameOver)
   // grid.removeEventListener('click', startGame, false)  THIS WORKS, disables the buttons
  
-
+  // slideOne.addEventListener('mouseenter', handleMouseEnter)
+  // slideOne.addEventListener('mouseleave', handleMouseLeave)
 
 
   createGrid()
+
+
+
+
+  // function playAgain(event) {
+  //   playerOneChoice = [0]
+  //   playerTwoChoice = [0]
+  //   currentPlayer = allPlayers[0]
+
+  //   ysl.classList.remove('pulse')
+  //   chanel.classList.remove('pulse')
+
+  //   grid.innerHTML = ''
+  //   createGrid()  
+
+  //   const myFirstTimer = setTimeout(() => {
+  //     winnerElement.style.display = 'none'
+  //     drawDisplay.style.display = 'none'
+  //   }, 1000)
+
+  //   checkCurrentElementPlayerOne()
+  //   checkCurrentElementPlayerTwo()
+  //   startGame()
+
+  //   console.log('event', event.target)
+  // }
 
 
 
