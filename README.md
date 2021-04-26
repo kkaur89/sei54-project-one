@@ -69,8 +69,8 @@ The second and third day was spent around writing logic for each of the possible
 As this was my first project, I had very little experience and confidence in writing vanilla javascript, and this was therefore the most difficult part of the game for me. I had the logic behind the code in terms of knowing what each piece of code should do, but writing the syntax was where I struggled. I spent the entire weekend re-writing code, reading through notes in class, and scouring the site for javascript docs and stack overflow syntax solutions.
 My logic was that I would need the id of the user choice to meet the conditions inside an if statement before being added to the array use the Push method.
 
-### Day Four:
-With the guidance of the course tutors I had managed to refine my if statement and successfully start to store the index's in the array. Each player was recognised by the classname of the bag that they were given. This classname was used in the logic to push the index of that choice into a pre-defined empyh array for both PlayerOneChoice and PlayerTwoChoice.
+### Day Four - Five:
+With the guidance of the course tutors I had managed to refine my if statement and successfully start to store the index's in the array. Each player was recognised by the classname of the bag that they were given. This classname was used in the logic to push the index of that choice into a pre-defined empty array for both PlayerOneChoice and PlayerTwoChoice.
 
     function checkCurrentElementPlayerOne(index) {
 
@@ -88,4 +88,31 @@ With the guidance of the course tutors I had managed to refine my if statement a
       } return false
     }
 
-I also started writing out the logic for the next step for the winning conditions, i.e. based on the index location if next index in the array is 
+I also started writing out the logic for the winning conditions using a while loop. So below is the first condition to check to see if the cell selected is left or right of the current cell position. 
+
+      // FIRST LOOP - LEFT AND RIGHT
+
+      while (index % width !== 0 && checkCurrentElementPlayerOne(index)) {
+        index++
+          
+      }
+
+
+      index = choice - 1
+
+      while ((index + 1) % width !== width - 1 && index % width !== width - 1 && checkCurrentElementPlayerOne(index)) {    // added the first the condition
+ 
+        index--
+      }
+      
+There were bugs and challenges at pretty much all steps of the this game, at this point I realised that the game was allowing me to overtype a cell that already contained either of the players choices, which was then meant that the stored array of winning index's were incorrect. To fix this I had write another statement before all the while loops to say, start at the bottom row and if the cell already contains either of the bags then move to the next row up.
+
+    function startGame(event) {
+        if (currentPlayer === allPlayers[0]) {
+
+
+          let choice = Number(event.target.id) % width + 36
+
+          while (cells[choice].classList.contains('chanel') || (cells[choice].classList.contains('ysl'))) {
+            choice = choice - width
+          }
