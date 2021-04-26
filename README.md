@@ -5,7 +5,7 @@
 - Project Overview
 - Project Brief
 - Technologies Used
-- Approach Taken
+- Project Timeline
 - Featured Code
 - Bugs
 - Wins and Challenges
@@ -40,3 +40,52 @@ Play the full game here: https://kkaur89.github.io/sei54-project-one/
 - Git
 - GitHub
 - Google Fonts
+
+## Project Timeline - 7 Days
+
+### Day One:
+The first day was based around planning the game through Pseudocoding down to MVP level. Once I was signed off I started by creating the styling shell of my game so that I could visually see something on the screen. I had created the background and handbag wardobe, as well as selecting each handbag for the users.
+The grid was then created and layered on top of the wadrobe. Each cell of the grid was then given an "id" which the majority of the code would then be based around.
+
+In terms of functionality I managed to get the each of the bags to render in the cell by passing through the id, and using an event listener for the click. I was also able to switch between players once each of them had thier go. 
+
+    const width = 6
+    const height = 7
+    const cellCount = width * height
+    const cells = []
+  
+    function createGrid() {
+      for (let i = 0; i < cellCount; i++) {
+        const cell = document.createElement('div')
+        // cell.textContent = i
+        cell.id = i
+        grid.appendChild(cell)
+        cells.push(cell)
+       }
+     }
+  
+### Day Two - Three:
+The second and third day was spent around writing logic for each of the possible winning scenarios. The first step was to store the user's first choice in an array, but then only store the remaining three choices based the previous index in the array meeting the wining conditions. 
+
+As this was my first project, I had very little experience and confidence in writing vanilla javascript, and this was therefore the most difficult part of the game for me. I had the logic behind the code in terms of knowing what each piece of code should do, but writing the syntax was where I struggled. I spent the entire weekend re-writing code, reading through notes in class, and scouring the site for javascript docs and stack overflow syntax solutions.
+My logic was that I would need the id of the user choice to meet the conditions inside an if statement before being added to the array use the Push method.
+
+### Day Four:
+With the guidance of the course tutors I had managed to refine my IF statement and successfully start to store the index's in the array. Each player was recognised by the classname of the bag that they were given. This classname was used in the logic to push the index of that choice into a pre-defined empyh array for both PlayerOneChoice and PlayerTwoChoice.
+
+    function checkCurrentElementPlayerOne(index) {
+
+      if (cells[index].classList.contains('chanel')) {
+        playerOneChoice.push(index)
+        return true
+      } return false
+    }
+
+     function checkCurrentElementPlayerTwo(index) {
+
+      if (cells[index].classList.contains('ysl')) {
+        playerTwoChoice.push(index)
+        return true
+      } return false
+    }
+
