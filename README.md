@@ -15,7 +15,7 @@
 
 Connect 4 is a game where players attempt to make a line of four pieces in a 7 x 6 grid. Players can drop their pieces into columns, so that their piece rests in the lowest available space in that column.
 
-This classic game has been created with a twist, taking my love for all things luxury, each player does not have a coin to throw but instead a designer bag to place on a shelf. The aim was to feel like the player is in a store environment in the handbag section of Selfridges.
+This classic game has been created with a twist, taking my love for all things luxury, each player does not have a coin to throw but instead a designer bag to place on a shelf. The aim was for the players to feel like they are in a store environment in the handbag section of Selfridges.
 
 ![Screenshot 2021-04-26 at 11 43 12](https://user-images.githubusercontent.com/77445688/116070516-a475a780-a684-11eb-8d39-31e30875a495.png)
 
