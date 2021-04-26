@@ -6,7 +6,6 @@
 - Project Brief
 - Technologies Used
 - Project Timeline
-- Featured Code
 - Bugs
 - Wins and Challenges
 - Future Improvements
@@ -71,7 +70,7 @@ As this was my first project, I had very little experience and confidence in wri
 My logic was that I would need the id of the user choice to meet the conditions inside an if statement before being added to the array use the Push method.
 
 ### Day Four:
-With the guidance of the course tutors I had managed to refine my IF statement and successfully start to store the index's in the array. Each player was recognised by the classname of the bag that they were given. This classname was used in the logic to push the index of that choice into a pre-defined empyh array for both PlayerOneChoice and PlayerTwoChoice.
+With the guidance of the course tutors I had managed to refine my if statement and successfully start to store the index's in the array. Each player was recognised by the classname of the bag that they were given. This classname was used in the logic to push the index of that choice into a pre-defined empyh array for both PlayerOneChoice and PlayerTwoChoice.
 
     function checkCurrentElementPlayerOne(index) {
 
@@ -89,3 +88,4 @@ With the guidance of the course tutors I had managed to refine my IF statement a
       } return false
     }
 
+I also started writing out the logic for the next step for the winning conditions, i.e. based on the index location if next index in the array is 
