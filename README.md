@@ -88,7 +88,7 @@ With the guidance of the course tutors I had managed to refine my if statement a
       } return false
     }
 
-I also started writing out the logic for the winning conditions using a while loop. So below is the first condition to check to see if the cell selected is left or right of the current cell position. 
+I also started writing out the logic for the winning conditions using a while loop. So below is the first condition to check to see if the cell selected is left or right of the current cell position. I worked on adding all of the winning conditions over day four and five, whilst also trying to add styling along the way so that I didn't leave it until the very end.
 
       // FIRST LOOP - LEFT AND RIGHT
 
