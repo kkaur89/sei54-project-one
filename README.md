@@ -17,7 +17,8 @@ Connect 4 is a game where players attempt to make a line of four pieces in a 7 x
 
 This classic game has been created with a twist, taking my love for all things luxury, each player does not have a coin to throw but instead a designer bag to place on a shelf. The aim was for the players to feel like they are in a store environment in the handbag section of Selfridges.
 
-![Screenshot 2021-04-26 at 17 06 03](https://user-images.githubusercontent.com/77445688/116114930-bfaadc00-a6b1-11eb-8ab4-79902fb17fc8.png)
+
+![Screenshot 2021-04-26 at 17 08 16](https://user-images.githubusercontent.com/77445688/116115166-0567a480-a6b2-11eb-90ac-27fffc06dca5.png)
 
 
 Play the full game here: https://kkaur89.github.io/sei54-project-one/
