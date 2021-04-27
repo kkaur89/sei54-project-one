@@ -117,3 +117,24 @@ There were bugs and challenges at pretty much all steps of the this game, at thi
           while (cells[choice].classList.contains('chanel') || (cells[choice].classList.contains('ysl'))) {
             choice = choice - width
           }
+
+## Day Six: 
+This day was mostly spent error handling and finalising styling features. I added the animation where the item drops from the top of the grid to the selected cell as it would in the traditional version of the game using "fall-animation". I also added features that displayed the winner on the page, which renders over the game rather than user being taken to a different page.
+
+
+## Day Seven:
+This was the final day where I had a few hours in the morning to refine parts of the game. I added the bag quotes and when you hover of them the quotes change. Ideally I would have like to add virtual shop assitants behind store shelves but ran out of time. Below is a screen recodrding of the game start to finish with the features mentioned above.
+
+[ProjectOne.mov.zip](https://github.com/kkaur89/sei54-project-one/files/6385242/ProjectOne.mov.zip)
+
+
+
+
+
+
+
+
+
+
+
+
