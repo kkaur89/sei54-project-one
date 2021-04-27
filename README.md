@@ -141,4 +141,17 @@ With this project being my first one and also compeleting this solo, I faced cha
 - Even though the logic and problem solving were my biggest challenges, I also learn't alot from each issue. I got more comfortable with while loops and vanilla javascript on whole.
 - The animations I was able to implement, especially the drop feature.
 
+## Future Improvements
+
+- Fix the bugs
+- Responsive Design
+- Store the players score to implement Highest Score feature using local storage
+- Tidy the CSS and ensure the Winner and End Game elements were are coherent in design and also add more design to the page
+
+## Key Learnings
+- This project has helped me to solidify my understanding of Javascript fundamentals
+- Knowing when to leave a problem and move to another section of the project
+- Comment your code as much as possible, this is something I need to do more of
+- Console.log everything, this is the key to breaking down the problem
+
 
