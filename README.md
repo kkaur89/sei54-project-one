@@ -127,9 +127,10 @@ This day was mostly spent error handling and finalising styling features. I adde
 This was the final day where I had a few hours in the morning to refine parts of the game. I added the bag quotes and when you hover of them the quotes change. Ideally I would have like to add virtual shop assitants behind store shelves but ran out of time. Below is a screen recording of some the features mentioned above. 
 
 
-https://user-images.githubusercontent.com/77445688/116258347-c8141d00-a76c-11eb-98fc-087e58990933.mov
+https://user-images.githubusercontent.com/77445688/116259661-e7f81080-a76d-11eb-99f0-146764823b68.mov
 
 
-
+## Bugs
+The current known bugs are that currently the players are not able to draw the gane, there is an erorr when 
 
 
