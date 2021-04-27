@@ -45,10 +45,10 @@ Play the full game here: https://kkaur89.github.io/sei54-project-one/
 ## Project Timeline - 7 Days
 
 ### Day One:
-The first day was based around planning the game through Pseudocoding down to MVP level. Once I was signed off I started by creating the styling shell of my game so that I could visually see something on the screen. I had created the background and handbag wardobe, as well as selecting each handbag for the users.
-The grid was then created and layered on top of the wadrobe. Each cell of the grid was then given an "id" which the majority of the code would then be based around.
+The first day was based around planning the game through Pseudocoding down to MVP level. Once I was signed off I started by creating the styling shell of my game so that I could visually see something on the screen. I had created the background and handbag wardrobe, as well as selecting each handbag for the users.
+The grid was then created and layered on top of the wardrobe. Each cell of the grid was then given an "id" which the majority of the code would then be based around.
 
-In terms of functionality I managed to get the each of the bags to render in the cell by passing through the id, and using an event listener for the click. I was also able to switch between players once each of them had thier go. 
+In terms of functionality I managed to get each of the bags to render in the cell by passing through the id, and using an event listener for the click. I was also able to switch between players once each of them had their go. 
 
     const width = 6
     const height = 7
@@ -66,10 +66,10 @@ In terms of functionality I managed to get the each of the bags to render in the
      }
   
 ### Day Two - Three:
-The second and third day was spent around writing logic for each of the possible winning scenarios. The first step was to store the user's first choice in an array, but then only store the remaining three choices based the previous index in the array meeting the wining conditions. 
+The second and third day was spent around writing logic for each of the possible winning scenarios. The first step was to store the user's first choice in an array, but then only store the remaining three choices based on the previous index in the array meeting the winning conditions. 
 
-As this was my first project, I had very little experience and confidence in writing vanilla javascript, and this was therefore the most difficult part of the game for me. I had the logic behind the code in terms of knowing what each piece of code should do, but writing the syntax was where I struggled. I spent the entire weekend re-writing code, reading through notes in class, and scouring the site for javascript docs and stack overflow syntax solutions.
-My logic was that I would need the id of the user choice to meet the conditions inside an if statement before being added to the array use the Push method.
+As this was my first project, I had very little experience and confidence in writing vanilla javascript, and this was therefore the most difficult part of the game for me. I had the logic behind the code in terms of knowing what each piece of code should do, but writing the syntax was where I struggled. I spent the entire weekend rewriting code, reading through notes in class, and scouring the site for javascript docs and stack overflow syntax solutions.
+My logic was that I would need the id of the user choice to meet the conditions inside an if statement before being added to the array using the Push method.
 
 ### Day Four - Five:
 With the guidance of the course tutors I had managed to refine my if statement and successfully start to store the index's in the array. Each player was recognised by the classname of the bag that they were given. This classname was used in the logic to push the index of that choice into a pre-defined empty array for both PlayerOneChoice and PlayerTwoChoice.
@@ -107,7 +107,7 @@ I also started writing out the logic for the winning conditions using a while lo
         index--
       }
       
-There were bugs and challenges at pretty much all steps of the this game, at this point I realised that the game was allowing me to overtype a cell that already contained either of the players choices, which was then meant that the stored array of winning index's were incorrect. To fix this I had write another statement before all the while loops to say, start at the bottom row and if the cell already contains either of the bags then move to the next row up.
+There were bugs and challenges at pretty much all steps of this game, at this point I realised that the game was allowing me to overtype a cell that already contained either of the players choices, which was then meant that the stored array of winning indexes were incorrect. To fix this I had to write another statement before all the while loops to say, start at the bottom row and if the cell already contains either of the bags then move to the next row up.
 
     function startGame(event) {
         if (currentPlayer === allPlayers[0]) {
@@ -120,17 +120,25 @@ There were bugs and challenges at pretty much all steps of the this game, at thi
           }
 
 ## Day Six: 
-This day was mostly spent error handling and finalising styling features. I added the animation where the item drops from the top of the grid to the selected cell as it would in the traditional version of the game using "fall-animation". I also added features that displayed the winner on the page, which renders over the game rather than user being taken to a different page.
+This day was mostly spent error handling and finalising styling features. I added the animation where the item drops from the top of the grid to the selected cell as it would in the traditional version of the game using "fall-animation". I also added features that displayed the winner on the page, which renders over the game rather than the user being taken to a different page.
 
 
 ## Day Seven:
-This was the final day where I had a few hours in the morning to refine parts of the game. I added the bag quotes and when you hover of them the quotes change. Ideally I would have like to add virtual shop assitants behind store shelves but ran out of time. Below is a screen recording of some the features mentioned above. 
-
+This was the final day where I had a few hours in the morning to refine parts of the game. I added the bag quotes and when you hover on them the quotes change. Ideally I would have liked to add virtual shop assistants behind store shelves but I ran out of time. Below is a screen recording of some of the features mentioned above.  
 
 https://user-images.githubusercontent.com/77445688/116259661-e7f81080-a76d-11eb-99f0-146764823b68.mov
 
 
 ## Bugs
-The current known bugs are that currently the players are not able to draw the gane, there is an erorr when 
+- On the final day I noticed that the players were not able to draw the game, there is an error when the player reaches the top row from id 0-4. This comes up with classlist undefined. This erorr refers to a line of code where it is chekcing to see if the cell to the top right or top left of the current cell contains the bag. As this is the top row there is no other nothing above to check. I believe I would need to add extra conditions for the while loop.
+
+## Challenges
+
+With this project being my first one and also compeleting this solo, I faced challenges daily:
+- The biggest one was the logic around the winning solutions and getting the results to store in an array. I initially avoided using any loops as I lacked confidence and knowledge which cost me time. Even when adding the while loop, each set of winning options had thier own problems which spanned over a few days.
+
+## Wins
+- Even though the logic and problem solving were my biggest challenges, I also learn't alot from each issue. I got more comfortable with while loops and vanilla javascript on whole.
+- The animations I was able to implement, especially the drop feature.
 
 
