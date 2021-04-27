@@ -143,15 +143,16 @@ With this project being my first one and also compeleting this solo, I faced cha
 
 ## Future Improvements
 
-- Fix the bugs
-- Responsive Design
-- Store the players score to implement Highest Score feature using local storage
-- Tidy the CSS and ensure the Winner and End Game elements were are coherent in design and also add more design to the page
+- Fix the bugs.
+- Responsive Design.
+- Store the players score to implement Highest Score feature using local storage.
+- Ensure the Winner and End Game elements were are coherent in styling with the rest of the game.
+- Add sounds.
 
 ## Key Learnings
-- This project has helped me to solidify my understanding of Javascript fundamentals
-- Knowing when to leave a problem and move to another section of the project
-- Comment your code as much as possible, this is something I need to do more of
-- Console.log everything, this is the key to breaking down the problem
+- This project has helped me to solidify my understanding of Javascript fundamentals.
+- Knowing when to leave a problem and move to another section of the project.
+- Comment your code as much as possible, this is something I need to do more of.
+- Console.log everything, this is the key to breaking down the problem.
 
 
