@@ -147,6 +147,7 @@ With this project being my first one and also compeleting this solo, I faced cha
 - Responsive Design.
 - Store the players score to implement Highest Score feature using local storage.
 - Ensure the Winner and End Game elements were are coherent in styling with the rest of the game.
+- Add a link to the retailer website so the player could purchase the handbag.
 - Add sounds.
 
 ## Key Learnings
